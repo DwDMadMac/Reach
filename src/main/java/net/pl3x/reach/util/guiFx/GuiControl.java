@@ -18,18 +18,18 @@ public class GuiControl {
      * Constructor for initializing the class objects
      *
      * @param target Initialize player interacting with inventory
-     * @param inventorySlot Initialize inventory slot amount
+     * @param inventorySlots Initialize inventory slot amount
      * @param inventoryName Initialize inventory custom name
      * //@param inventoryClosed Initialize if inventory was closed or not
      * //@param itemStack Initialize item inside inventory
      */
-    public GuiControl(Player target, int inventorySlot, String inventoryName, GuiHandler guiHandler) {
+    public GuiControl(Player target, int inventorySlots, String inventoryName, GuiHandler guiHandler) {
         this.target = target;
-        this.inventorySlots = inventorySlot;
+        this.inventorySlots = inventorySlots;
         this.inventoryName = inventoryName;
         this.guiHandle = guiHandler;
-        this.itemStackName = new String[inventorySlot];
-        this.itemStacks = new ItemStack[inventorySlot];
+        this.itemStackName = new String[inventorySlots];
+        this.itemStacks = new ItemStack[inventorySlots];
     }
 
     /**
