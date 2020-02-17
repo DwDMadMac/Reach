@@ -15,13 +15,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 /**
  * Reach Language Class
  * <p>
- * Here you will find all of the default language options
+ * Here you will find all the default language options
  */
 public class Lang {
     private static File configFile;
     private static YamlConfiguration config;
 
-    private static final String HEADER = "The main Language file for Reach.";
+    private static final String HEADER = "Main language file for Reach.";
 
     public static String COMMAND_NO_PERMISSION;
     public static String PLAYER_COMMAND;
@@ -31,7 +31,6 @@ public class Lang {
      * Apply the language options
      */
     private static void init() {
-        // TODO: Create lang.yml file
         COMMAND_NO_PERMISSION = getString("command-no-permission", "&4You do not have permission for that command!");
         PLAYER_COMMAND = getString("player-command","&4This command is only available to players!");
         DISABLED_COMMAND = getString("disabled-command","&cThe {getDisabledNamed} &cis disabled.");

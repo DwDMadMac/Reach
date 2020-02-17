@@ -14,7 +14,7 @@ public class MainPortal  {
     private Player target;
     private static List<String> itemStackLore;
 
-    public static void test(Player target){
+    public static void createMainPortal(Player target){
 
         GuiControl test = new GuiControl(target,36,"Main Reach Portal", mainPortal ->{
             if (mainPortal.isInventoryClosed()){

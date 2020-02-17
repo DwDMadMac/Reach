@@ -31,7 +31,7 @@ public class Main extends JavaPlugin {
         Config.reload();
         Lang.reload();
 
-        getCommand("reach").setExecutor(new CmdReload());
+        getCommand("reach").setExecutor(new CmdReload(this));
         getCommand("reachPortal").setExecutor(new CmdMainGui());
 
         Logger.info(getName() + " v" + Main.getInstance().getDescription().getVersion() + " enabled!");

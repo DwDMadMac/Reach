@@ -21,6 +21,16 @@ import org.bukkit.command.TabExecutor;
  */
 public class CmdReload implements TabExecutor {
     private Main plugin;
+    private String msg;
+
+    /**
+     * Initializing the plugin object
+     *
+     * @param plugin Load instance of plugin
+     */
+    public CmdReload(Main plugin) {
+        this.plugin = plugin;
+    }
 
     /**
      * Will auto populate the reload option in the text box to allow the user to tab in the remainder of the option
@@ -49,7 +59,7 @@ public class CmdReload implements TabExecutor {
      * @param command Get command object info
      * @param label get typed input from sender
      * @param args Get arguments after inputted command
-     * @return Return true if plugin was reloaded
+     * @return Return true if the plugin was reloaded
      */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -58,12 +68,11 @@ public class CmdReload implements TabExecutor {
             return true;
         }
 
-        // TODO: Fix NPE fo msg
-        String msg = plugin.getName() + " v" + plugin.getDescription().getVersion();
 
         if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
             Config.reload();
             Lang.reload();
+            msg = plugin.getName() + " v" + plugin.getDescription().getVersion();
             msg += " reload";
             Logger.info(plugin.getName() + " v" + plugin.getDescription().getVersion() + " was reloaded by " + sender.getName());
         }

@@ -27,7 +27,6 @@ public class Config {
      * Apply configuration options
      */
     private static void init() {
-        // TODO: Create config.yml file
         DEBUG_MODE = getBoolean("debug-mode",false);
         COLOR_LOGS = getBoolean("color-logs",true);
         INFO_LOGGING = getBoolean("info-logging", true);
