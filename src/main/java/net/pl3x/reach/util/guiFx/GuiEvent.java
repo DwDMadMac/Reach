@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * This is the base class that will handles all of the
+ * This is the base class which will handles all the
  * Graphical User Interfaces events for custom inventories
  */
 public class GuiEvent {
@@ -94,7 +94,7 @@ public class GuiEvent {
     }
 
     /**
-     * Get the item stack that is inside the custom inventroy
+     * Get the item stack that is inside the custom inventory
      *
      * @return Return item stack
      */

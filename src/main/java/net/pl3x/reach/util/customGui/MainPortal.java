@@ -16,7 +16,7 @@ public class MainPortal  {
 
     public static void createMainPortal(Player target){
 
-        GuiControl test = new GuiControl(target,36,"Main Reach Portal", mainPortal ->{
+        GuiControl reachMainPortal = new GuiControl(target,36,"Main Reach Portal", mainPortal ->{
             if (mainPortal.isInventoryClosed()){
                 mainPortal.getTarget().closeInventory();
             }
@@ -25,10 +25,7 @@ public class MainPortal  {
         // TODO: FIX NPE for item stack lore
         itemStackLore.add("&7Click to close the");
         itemStackLore.add("&7Main Reach Portal");
-        test.setItemStack(
-                0,
-                new ItemStack(Material.APPLE),
-                Lang.colorize("&4Close Inventory"),
-                itemStackLore);
+        reachMainPortal.setItemStack(0, new ItemStack(Material.APPLE), Lang.colorize("&4Close Inventory"), itemStackLore);
+
     }
 }
