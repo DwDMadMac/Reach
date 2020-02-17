@@ -17,7 +17,7 @@ public class GuiControl {
     /**
      * Constructor for initializing the class objects
      *
-     * @param target Initialize player interacting with inventory
+     * @param target Initialize a player interacting with inventory
      * @param inventorySlots Initialize inventory slot amount
      * @param inventoryName Initialize inventory custom name
      * //@param inventoryClosed Initialize if inventory was closed or not
@@ -33,7 +33,7 @@ public class GuiControl {
     }
 
     /**
-     * This method gets the custom item stack and sets it and the custom data to the given slot location
+     * This method gets the custom item stack and sets it, and the custom data to the given slot location
      *
      * @param invSlot Set custom item stack to inventory slot
      * @param itemStackType Set custom item stack
