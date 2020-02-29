@@ -2,12 +2,19 @@ package net.pl3x.reach.listener;
 
 import net.pl3x.reach.Main;
 import net.pl3x.reach.configuration.Config;
+import net.pl3x.reach.configuration.Lang;
+import net.pl3x.reach.util.CustomTools;
 import net.pl3x.reach.util.Logger;
+import net.pl3x.reach.util.guiFx.GuiControl;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+
+import static net.pl3x.reach.util.customGui.ToolsPortal.createToolsPortal;
 
 public class MainPortalListener implements Listener {
     private Main plugin;
@@ -28,7 +35,7 @@ public class MainPortalListener implements Listener {
         String clickedInvTitle = inventoryClickEvent.getWhoClicked().getOpenInventory().getTitle();
 
         if (!clickedInvTitle.equalsIgnoreCase(invName)){
-            Logger.debug("onMainPortalClick | Now main portal inventory, return.");
+            Logger.debug("onMainPortalClick | Not main portal inventory, return.");
             return;
         }
 
@@ -37,6 +44,24 @@ public class MainPortalListener implements Listener {
         Logger.debug("onMainPortalClick | All clickable events are canceled for Main Reach Portal.");
 
         target = (Player) inventoryClickEvent.getWhoClicked();
+
+        ItemStack itemClicked = inventoryClickEvent.getCurrentItem();
+
+        // Close inventory if ItemStack APPLE is clicked
+        if (itemClicked.getType().equals(Material.APPLE)){
+            target.closeInventory();
+
+            Logger.debug("onMainPortalClick | Target clicked Apple, closing inventory.");
+            Lang.send(target, "Closing inventory");
+        }
+
+        // Close Main Reach Portal and open Tools Portal
+        if (itemClicked.getType().equals(Material.DIAMOND_AXE)){
+            target.closeInventory();
+
+            CustomTools[] portalItems = {CustomTools.TREE_SPAWNER};
+            createToolsPortal(target, portalItems);
+        }
 
 
     }
