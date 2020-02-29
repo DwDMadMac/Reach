@@ -15,7 +15,7 @@ public class Logger {
      *
      * @param msg Send console message
      */
-    private static void log(String msg) {
+    public static void log(String msg) {
         msg = ChatColor.translateAlternateColorCodes('&', "&a[&7Reach&a]&r " + msg);
         if (!Config.COLOR_LOGS){
             msg = ChatColor.stripColor(msg);
