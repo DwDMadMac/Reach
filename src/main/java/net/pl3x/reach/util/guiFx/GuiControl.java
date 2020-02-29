@@ -97,12 +97,4 @@ public class GuiControl implements Listener {
         // Open the custom inventory with custom item stacks
         target.openInventory(inventory);
     }
-
-    public void destroy() {
-        HandlerList.unregisterAll(this);
-        guiHandle = null;
-        plugin = null;
-        itemStackNames = null;
-        itemStacks = null;
-    }
 }
