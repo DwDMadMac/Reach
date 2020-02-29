@@ -31,7 +31,7 @@ public class Logger {
      * @param msg Send debug message
      */
     public static void debug(String msg) {
-        msg = ChatColor.translateAlternateColorCodes('&', "&2[&eDEBUG*2]&r " + msg);
+        msg = ChatColor.translateAlternateColorCodes('&', "&2[&eDEBUG&2]&f " + msg);
         if (Config.DEBUG_MODE){
             if (!Config.COLOR_LOGS){
                 msg = ChatColor.stripColor(msg);
