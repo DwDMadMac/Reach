@@ -37,12 +37,8 @@ public class ToolsPortal {
      * @param portalItems Get custom tools portal items
      */
     public static void createToolsPortal(Player target, CustomTools[] portalItems) {
-        reachToolsPortal = new GuiControl(target,9,"Tools Portal", guiEvent -> {
-            //guiEvent.setInventoryClosed(true);
-            if (guiEvent.getInventoryClickEvent().getCurrentItem().getType() == Material.DIAMOND_AXE){
-
-            }
-        } , plugin);
+        //reachToolsPortal = new GuiControl(9,"Tools Portal", guiEvent -> { } , plugin);
+        reachToolsPortal = new GuiControl(9,"Tools Portal", plugin);
 
         for (CustomTools customTools : portalItems) {
             switch (customTools) {

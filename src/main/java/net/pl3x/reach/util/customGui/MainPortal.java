@@ -9,6 +9,7 @@ import net.pl3x.reach.configuration.Config;
 import net.pl3x.reach.configuration.Lang;
 import net.pl3x.reach.util.CustomOptions;
 import net.pl3x.reach.util.CustomTools;
+import net.pl3x.reach.util.Logger;
 import net.pl3x.reach.util.guiFx.*;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -30,7 +31,7 @@ public class MainPortal {
      * @param plugin Get plugin
      */
     public MainPortal(Main plugin) {
-        this.plugin = plugin;
+        MainPortal.plugin = plugin;
     }
 
     /**
@@ -40,7 +41,8 @@ public class MainPortal {
      * @param portalItems Get custom portal items
      */
     public static void createMainPortal(Player target, CustomOptions[] portalItems){
-        reachMainPortal = new GuiControl(target,9,Config.MAIN_PORTAL_TITLE, guiEvent -> { } , plugin);
+        reachMainPortal = new GuiControl(9, Config.MAIN_PORTAL_TITLE, plugin);
+        //reachMainPortal = new GuiControl(target,9,Config.MAIN_PORTAL_TITLE, plugin);
 
         // TODO: Use polymorphism to fix the switch case issue
         for (CustomOptions customOptions : portalItems){

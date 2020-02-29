@@ -1,6 +1,8 @@
 package net.pl3x.reach.util.guiFx;
 
 import java.util.List;
+
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class GuiItem extends GuiEvent {
@@ -8,6 +10,10 @@ public class GuiItem extends GuiEvent {
     private String itemName;
     private int modelData;
     private List<String> itemLore;
+
+    public GuiItem(Player target, int inventorySlot, String inventoryName, ItemStack itemStack) {
+        super(target, inventorySlot, inventoryName, itemStack);
+    }
 
     /**
      * This method will get the item stack

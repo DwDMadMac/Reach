@@ -5,6 +5,7 @@ import java.util.List;
 import net.pl3x.reach.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
@@ -13,33 +14,36 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
 public class GuiControl implements Listener {
+    private GuiEvent guiEvent;
     private Player target;
     private Plugin plugin;
     private int inventorySlots;
     private String inventoryName;
     private GuiHandler guiHandle;
-    private String[] itemStackName;
+    private String[] itemStackNames;
     private ItemStack[] itemStacks;
 
     /**
      * Constructor for initializing the class objects
      *
-     * @param target Initialize a player interacting with inventory
+     *
      * @param inventorySlots Initialize inventory slot amount
      * @param inventoryName Initialize inventory custom name
      * //@param inventoryClosed Initialize if inventory was closed or not
      * //@param itemStack Initialize item inside inventory
      */
-    public GuiControl(Player target, int inventorySlots, String inventoryName, GuiHandler guiHandler, Plugin plugin) {
+    //public GuiControl(int inventorySlots, String inventoryName, GuiHandler guiHandler, Plugin plugin) {
     //public GuiControl(Player target, int inventorySlots, String inventoryName, Plugin plugin) {
-        this.target = target;
+    public GuiControl(int inventorySlots, String inventoryName, Plugin plugin) {
+        //this.target = target;
         this.inventorySlots = inventorySlots;
         this.inventoryName = inventoryName;
-        this.guiHandle = guiHandler;
+        //this.guiHandle = guiHandler;
         this.plugin = plugin;
-        this.itemStackName = new String[inventorySlots];
+        this.itemStackNames = new String[inventorySlots];
         this.itemStacks = new ItemStack[inventorySlots];
-        //plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        assert false;
+        //plugin.getServer().getPluginManager().registerEvents((Listener) guiEvent, plugin);
     }
 
     /**
@@ -52,7 +56,7 @@ public class GuiControl implements Listener {
      * @return Return custom item stack and it data
      */
     public GuiControl setItemStack(int invSlot, ItemStack itemStackType, String itemStackNameSet, List<String> itemStackLoreSet){
-        itemStackName[invSlot] = itemStackNameSet;
+        itemStackNames[invSlot] = itemStackNameSet;
         itemStacks[invSlot] = setItem(itemStackType, itemStackNameSet, itemStackLoreSet);
         return this;
     }
@@ -92,5 +96,13 @@ public class GuiControl implements Listener {
         }
         // Open the custom inventory with custom item stacks
         target.openInventory(inventory);
+    }
+
+    public void destroy() {
+        HandlerList.unregisterAll(this);
+        guiHandle = null;
+        plugin = null;
+        itemStackNames = null;
+        itemStacks = null;
     }
 }

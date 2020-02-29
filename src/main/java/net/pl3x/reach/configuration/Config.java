@@ -44,7 +44,7 @@ public class Config {
      * Apply configuration options
      */
     private static void init() {
-        DEBUG_MODE = getBoolean("debug-mode",false);
+        DEBUG_MODE = getBoolean("debug-mode",true);
         COLOR_LOGS = getBoolean("color-logs",true);
         INFO_LOGGING = getBoolean("info-logging", true);
         WARN_LOGGING = getBoolean("warn-logging", true);

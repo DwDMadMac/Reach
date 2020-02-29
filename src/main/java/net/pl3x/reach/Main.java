@@ -4,6 +4,7 @@ import net.pl3x.reach.command.CmdMainGui;
 import net.pl3x.reach.command.CmdReload;
 import net.pl3x.reach.configuration.Config;
 import net.pl3x.reach.configuration.Lang;
+import net.pl3x.reach.listener.MainPortalListener;
 import net.pl3x.reach.util.Logger;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,7 +14,6 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author DwDMadMac
  */
 public class Main extends JavaPlugin {
-
     private static Main instance;
 
     /**
@@ -31,6 +31,10 @@ public class Main extends JavaPlugin {
         Config.reload();
         Lang.reload();
 
+        // Register events
+        getServer().getPluginManager().registerEvents(new MainPortalListener(this), this);
+
+        // Register commands
         getCommand("reach").setExecutor(new CmdReload(this));
         getCommand("portal").setExecutor(new CmdMainGui(this));
 

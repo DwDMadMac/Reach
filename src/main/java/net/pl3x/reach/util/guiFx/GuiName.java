@@ -1,10 +1,17 @@
 package net.pl3x.reach.util.guiFx;
 
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
 /**
  * This class will set and get the inventory name for the custom GUI
  */
 public class GuiName extends GuiEvent {
     private String inventoryName;
+
+    public GuiName(Player target, int inventorySlot, String inventoryName, ItemStack itemStack) {
+        super(target, inventorySlot, inventoryName, itemStack);
+    }
 
     /**
      * Gets the custom inventory name
