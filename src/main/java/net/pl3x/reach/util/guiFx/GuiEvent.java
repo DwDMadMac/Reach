@@ -1,8 +1,12 @@
 package net.pl3x.reach.util.guiFx;
 
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 
 /**
  * This is the base class which will handles all the
@@ -14,6 +18,35 @@ public class GuiEvent {
     private String inventoryName;
     private boolean inventoryClosed;
     private ItemStack itemStack;
+    private InventoryClickEvent inventoryClickEvent;
+
+
+    //private Player target;
+    private Plugin plugin;
+    private int inventorySlots;
+    //private String inventoryName;
+    private GuiHandler guiHandle;
+    private String[] itemStackName;
+    private ItemStack[] itemStacks;
+
+
+    /**
+     * Check for inventory click events
+     *
+     * @return Return inventory clicks
+     */
+    public InventoryClickEvent getInventoryClickEvent() {
+        return inventoryClickEvent;
+    }
+
+    /**
+     * This method will make inventory click event true or false
+     *
+     * @param inventoryClickEvent Set inventory click event
+     */
+    public void setInventoryClickEvent(InventoryClickEvent inventoryClickEvent) {
+        this.inventoryClickEvent = inventoryClickEvent;
+    }
 
     /**
      * Get the player interacting with custom inventory

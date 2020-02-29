@@ -1,16 +1,31 @@
 package net.pl3x.reach.command;
 
+import java.util.Collections;
 import java.util.List;
+
+import net.pl3x.reach.Main;
 import net.pl3x.reach.configuration.Lang;
-import static net.pl3x.reach.util.customGui.MainPortal.test;
-import net.pl3x.reach.util.guiFx.GuiHandler;
+
+import net.pl3x.reach.util.CustomOptions;
+import net.pl3x.reach.util.customGui.MainPortal;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
+import static net.pl3x.reach.util.customGui.MainPortal.createMainPortal;
+
 public class CmdMainGui implements TabExecutor {
-    private GuiHandler customInventory;
+    private Main plugin;
+
+    /**
+     * Initialize reach instance
+     *
+     * @param plugin Get plugin instance
+     */
+    public CmdMainGui(Main plugin) {
+        this.plugin = plugin;
+    }
 
     /**
      * Will auto populate the main gui options in the text box to allow the user to tab in the remainder of the option
@@ -23,7 +38,11 @@ public class CmdMainGui implements TabExecutor {
      */
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        return null;
+        if ( args.length == 1 && "main".startsWith(args[0].toLowerCase()) && sender.hasPermission("command.reach.portal.main") ) {
+            return Collections.singletonList("main");
+        }
+
+        return Collections.emptyList();
     }
 
     /**
@@ -44,7 +63,7 @@ public class CmdMainGui implements TabExecutor {
      */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        // Check if the send is a player
+        // Check if send is a player
         if (!(sender instanceof Player)){
             Lang.send(sender, Lang.PLAYER_COMMAND);
             return true;
@@ -59,8 +78,12 @@ public class CmdMainGui implements TabExecutor {
             return true;
         }
 
-        // Create custom inventory
-        test(target);
+        if (args.length > 0 && args[0].equalsIgnoreCase("main")) {
+            // Create custom inventory
+            CustomOptions[] portalItems = {CustomOptions.CUSTOM_TOOLS, CustomOptions.CUSTOM_WEAPONS};
+            createMainPortal(target, portalItems);
+            Lang.send(target, "Main Portal Opened?");
+        }
 
         return true;
     }

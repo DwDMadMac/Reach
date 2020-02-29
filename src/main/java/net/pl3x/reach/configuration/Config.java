@@ -22,6 +22,23 @@ public class Config {
     public static boolean WARN_LOGGING;
     public static boolean ERROR_LOGGING;
     public static String LANGUAGE_FILE;
+    // Main portal: Name
+    public static String MAIN_PORTAL_TITLE;
+    // Main Portal: Close Inventory
+    public static int CLOSE_INVENTORY_SLOT;
+    public static String CLOSE_INVENTORY_TYPE;
+    public static String CLOSE_INVENTORY_TITLE;
+    public static String CLOSE_INVENTORY_LORE;
+    // Main Portal: Tools Portal Icon
+    public static int TOOLS_PORTAL_SLOT;
+    public static String TOOLS_PORTAL_TYPE;
+    public static String TOOLS_PORTAL_TITLE;
+    public static String TOOLS_PORTAL_LORE;
+    // Tools Portal: Tree Spawner
+    public static int TREE_SPAWNER_SLOT;
+    public static String TREE_SPAWNER_TYPE;
+    public static String TREE_SPAWNER_TITLE;
+    public static String TREE_SPAWNER_LORE;
 
     /**
      * Apply configuration options
@@ -33,6 +50,22 @@ public class Config {
         WARN_LOGGING = getBoolean("warn-logging", true);
         ERROR_LOGGING = getBoolean("error-logging", true);
         LANGUAGE_FILE = getString("language-file", "lang-en.yml");
+        MAIN_PORTAL_TITLE = getString("portal.main.portal-title","Main Reach Portal");
+        // Main Portal: Close Inventory
+        CLOSE_INVENTORY_SLOT = getInt("portal.main.close-inventory-slot", 0);
+        CLOSE_INVENTORY_TYPE = getString("portal.main.close-inventory-type", "APPLE");
+        CLOSE_INVENTORY_TITLE = getString("portal.main.close-inventory-title","&4Close Portal");
+        CLOSE_INVENTORY_LORE = getString("portal.main.close-inventory-lore","&7Click to close Main\n&7Reach Portal.");
+        // Main Portal: Tools Portal Icon
+        TOOLS_PORTAL_SLOT = getInt("portal.main.tools-portal-slot",2);
+        TOOLS_PORTAL_TYPE = getString("portal.main.tools-portal-type","DIAMOND_AXE");
+        TOOLS_PORTAL_TITLE = getString("portal.main.tools-portal-title","&7Open Tools Portal");
+        TOOLS_PORTAL_LORE = getString("portal.main.tools-portal-lore","Open Custom Tools Portal");
+        // Tools Portal: Tree Spawner
+        TREE_SPAWNER_SLOT = getInt("portal.tools.tree-spawner-slot",2);
+        TREE_SPAWNER_TYPE = getString("portal.tools.tree-spawner-type","WOODEN_AXE");
+        TREE_SPAWNER_TITLE = getString("portal.tools.tree-spawner-title","Tree Spawner");
+        TREE_SPAWNER_LORE = getString("portal.tools.tree-spawner-lore","&7Spawn a custom tree");
     }
 
     // ############################  DO NOT EDIT BELOW THIS LINE  ############################

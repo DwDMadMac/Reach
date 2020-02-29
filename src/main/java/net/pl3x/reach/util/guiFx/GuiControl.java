@@ -1,13 +1,20 @@
 package net.pl3x.reach.util.guiFx;
 
 import java.util.List;
+
+import net.pl3x.reach.Main;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 
-public class GuiControl {
+public class GuiControl implements Listener {
     private Player target;
+    private Plugin plugin;
     private int inventorySlots;
     private String inventoryName;
     private GuiHandler guiHandle;
@@ -23,13 +30,16 @@ public class GuiControl {
      * //@param inventoryClosed Initialize if inventory was closed or not
      * //@param itemStack Initialize item inside inventory
      */
-    public GuiControl(Player target, int inventorySlots, String inventoryName, GuiHandler guiHandler) {
+    public GuiControl(Player target, int inventorySlots, String inventoryName, GuiHandler guiHandler, Plugin plugin) {
+    //public GuiControl(Player target, int inventorySlots, String inventoryName, Plugin plugin) {
         this.target = target;
         this.inventorySlots = inventorySlots;
         this.inventoryName = inventoryName;
         this.guiHandle = guiHandler;
+        this.plugin = plugin;
         this.itemStackName = new String[inventorySlots];
         this.itemStacks = new ItemStack[inventorySlots];
+        //plugin.getServer().getPluginManager().registerEvents(this, plugin);
     }
 
     /**
@@ -62,5 +72,25 @@ public class GuiControl {
         itemStackMeta.setLore(itemStackLoreSetter);
         itemStackSetter.setItemMeta(itemStackMeta);
         return itemStackSetter;
+    }
+
+    /**
+     * Open the custom inventory
+     * <p>
+     * This method will open the custom inventory with all the given
+     * custom item stacks
+     *
+     * @param target Get the player who is interacting with inventory
+     */
+    public void openInventory(Player target){
+        Inventory inventory = Bukkit.createInventory(target, inventorySlots, inventoryName);
+        // Input the item stack into slot
+        for (int i = 0; i < itemStacks.length; i++){
+            if (itemStacks[i] != null){
+                inventory.setItem(i, itemStacks[i]);
+            }
+        }
+        // Open the custom inventory with custom item stacks
+        target.openInventory(inventory);
     }
 }

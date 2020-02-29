@@ -3,21 +3,21 @@ main: "${project.groupId}.Main"
 version: "${project.version}"
 description: "${project.description} Coming Soon"
 author: "DwD_MadMac"
-api-version: "1.13"
+api-version: "1.15"
 softdepend: []
 
 commands:
   reach:
     description: Reload command for plugin
     usage: /<command> (reload)
-  reachPortal:
-    description: Open up Main Reach Portal
-    usage: /<command>
+  portal:
+    description: Open up Reach Portals
+    usage: /<command> (main)
 
 permissions:
   command.reach.reload:
     description: Allows you to reload the configuration files
     default: op
   command.reach.portal.main:
-    description: Allows you to access main reach portal
+    description: Allows you to access reach portals
     default: op
