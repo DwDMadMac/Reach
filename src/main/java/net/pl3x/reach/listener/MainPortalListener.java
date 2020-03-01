@@ -45,6 +45,7 @@ public class MainPortalListener implements Listener {
 
         target = (Player) inventoryClickEvent.getWhoClicked();
 
+        // Get clicked item
         ItemStack itemClicked = inventoryClickEvent.getCurrentItem();
 
         // Close inventory if ItemStack APPLE is clicked

@@ -21,3 +21,6 @@ permissions:
   command.reach.portal.main:
     description: Allows you to access reach portals
     default: op
+  command.reach.portal.tools.treeSpawner:
+    description: Allows you to use the Tree Spawner Tool
+    default: op

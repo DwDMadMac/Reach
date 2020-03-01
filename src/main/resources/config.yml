@@ -29,6 +29,7 @@ portal:
     tools-portal-title: "&7Open Tools Portal"
     tools-portal-lore: "Open Custom Tools Portal"
   tools:
+    tree-spawner-enabled: true
     tree-spawner-slot: 2
     tree-spawner-type: "WOODEN_AXE"
     tree-spawner-title: "Tree Spawner"

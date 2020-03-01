@@ -35,6 +35,7 @@ public class Config {
     public static String TOOLS_PORTAL_TITLE;
     public static String TOOLS_PORTAL_LORE;
     // Tools Portal: Tree Spawner
+    public static boolean TREE_SPAWNER_ENABLED;
     public static int TREE_SPAWNER_SLOT;
     public static String TREE_SPAWNER_TYPE;
     public static String TREE_SPAWNER_TITLE;
@@ -62,6 +63,7 @@ public class Config {
         TOOLS_PORTAL_TITLE = getString("portal.main.tools-portal-title","&7Open Tools Portal");
         TOOLS_PORTAL_LORE = getString("portal.main.tools-portal-lore","Open Custom Tools Portal");
         // Tools Portal: Tree Spawner
+        TREE_SPAWNER_ENABLED = getBoolean("portal.tools.tree-spawner-enabled",true);
         TREE_SPAWNER_SLOT = getInt("portal.tools.tree-spawner-slot",2);
         TREE_SPAWNER_TYPE = getString("portal.tools.tree-spawner-type","WOODEN_AXE");
         TREE_SPAWNER_TITLE = getString("portal.tools.tree-spawner-title","Tree Spawner");
