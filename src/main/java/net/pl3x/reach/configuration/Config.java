@@ -1,20 +1,19 @@
 package net.pl3x.reach.configuration;
 
-import com.google.common.base.Throwables;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
 import net.pl3x.reach.Main;
-import org.bukkit.Bukkit;
-import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+
+import java.io.File;
 
 /**
  * Reach Configuration Class
  * <p>
- * Here you will find all of the default configuration options
+ * Here you will find all the default configuration options
  */
 public class Config {
+    private static Main plugin = Main.getInstance();
+
     private static final String HEADER = "The main configuration file for Reach.";
     public static boolean DEBUG_MODE;
     public static boolean COLOR_LOGS;
@@ -40,6 +39,9 @@ public class Config {
     public static String TREE_SPAWNER_TYPE;
     public static String TREE_SPAWNER_TITLE;
     public static String TREE_SPAWNER_LORE;
+    // Tools Portal: Flower Spawner
+    // TODO: Make Flower Spawner settings
+    // TODO: Make forcefield bump players back
 
     /**
      * Apply configuration options
@@ -56,7 +58,7 @@ public class Config {
         CLOSE_INVENTORY_SLOT = getInt("portal.main.close-inventory-slot", 0);
         CLOSE_INVENTORY_TYPE = getString("portal.main.close-inventory-type", "APPLE");
         CLOSE_INVENTORY_TITLE = getString("portal.main.close-inventory-title","&4Close Portal");
-        CLOSE_INVENTORY_LORE = getString("portal.main.close-inventory-lore","&7Click to close Main\n&7Reach Portal.");
+        CLOSE_INVENTORY_LORE = getString("portal.main.close-inventory-lore","&7Click to close Main\n&7Reach Portal.\n");
         // Main Portal: Tools Portal Icon
         TOOLS_PORTAL_SLOT = getInt("portal.main.tools-portal-slot",2);
         TOOLS_PORTAL_TYPE = getString("portal.main.tools-portal-type","DIAMOND_AXE");
@@ -72,40 +74,29 @@ public class Config {
 
     // ############################  DO NOT EDIT BELOW THIS LINE  ############################
 
-    /**
-     * Reload the configuration file
-     */
-    @SuppressWarnings("deprecation")
-    public static void reload() {
-        Main plugin = Main.getInstance();
-        plugin.saveDefaultConfig();
-        File configFile = new File(plugin.getDataFolder(), "config.yml");
-        config = new YamlConfiguration();
-        try {
-            config.load(configFile);
-        } catch (IOException ignore) {
-            ignore.printStackTrace();
-        } catch (InvalidConfigurationException ex) {
-            ex.printStackTrace();
-            Bukkit.getLogger().log(Level.SEVERE, "Could not load config.yml, please correct your syntax errors", ex);
-            throw Throwables.propagate(ex);
-        }
-        config.options().header(HEADER);
-        config.options().copyDefaults(true);
+    private static FileConfiguration config = plugin.getConfig();
+    private static File configFile = new File(plugin.getDataFolder(), "config.yml");
 
+    /**
+     * Reloads the configuration file
+     *
+     * This method of reloading also saves the comments
+     * that are within the jar yml file.
+     */
+    public static void reload() {
+        if (!configFile.exists()) {
+            plugin.saveResource("config.yml", false);
+        }
+        config = YamlConfiguration.loadConfiguration(configFile);
+
+        config.options().header(HEADER);
         Config.init();
 
-        try {
-            config.save(configFile);
-        } catch (IOException ex) {
-            Bukkit.getLogger().log(Level.SEVERE, "Could not save " + configFile, ex);
-        }
+        config.saveToString();
     }
 
-    private static YamlConfiguration config;
-
     /**
-     * Gets the string path and the option that is set String with that path
+     * Gets the string path, and the option that is set String with that path
      *
      * @param path Get String Path
      * @param def Path message
@@ -117,7 +108,7 @@ public class Config {
     }
 
     /**
-     * Gets a boolean path and the option that is set to that boolean path
+     * Gets a boolean path, and the option that is set to that boolean path
      *
      * @param path Get boolean path
      * @param def Get boolean
@@ -129,7 +120,7 @@ public class Config {
     }
 
     /**
-     * Gets an Integer path and the option that is set to that integer path
+     * Gets an Integer path, and the option that is set to that integer path
      *
      * @param path Get integer path
      * @param def Get integer
