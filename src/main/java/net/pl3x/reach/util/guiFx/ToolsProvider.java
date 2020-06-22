@@ -3,6 +3,7 @@ package net.pl3x.reach.util.guiFx;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
+import net.md_5.bungee.api.chat.ClickEvent;
 import net.pl3x.reach.Main;
 import net.pl3x.reach.configuration.Config;
 import net.pl3x.reach.configuration.Lang;
@@ -24,26 +25,32 @@ public class ToolsProvider implements InventoryProvider {
     public void init(Player player, InventoryContents inventoryContents) {
         // Tree Spawner Tool
         inventoryContents.set(0,0, ClickableItem.of( portalItem.getItem("tools.tree-spawner"), e -> {
-            // Check if the tree Spawner tool is enabled
-            if (!Config.TREE_SPAWNER_ENABLED){
-                Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " clicked Tree Spawner tool, however it is disabled. Closing inventory");
-                player.closeInventory();
-                // TODO: Create lang for message
-                Lang.send(player, "Sorry, the Tree Spawner tool is disabled.");
+            // Check if target has permissions
+            if (!player.hasPermission("command.reach.portal.tools.treeSpawner")) {
+                Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " Does not have permission to use the Tree Spawner Tool. Return");
+                // TODO Create lang for message
+                Lang.send(player, Lang.COMMAND_NO_PERMISSION
+                        .replace("{getCommand}", "Tree Spawner"));
                 return;
             }
 
-            // Check if target has permissions
-            if (!player.hasPermission("command.reach.portal.tools.treeSpawner")){
-                Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " Does not have permission to use the Tree Spawner Tool. Return");
-                // TODO Create lang for message
-                Lang.send(player, "You do not have permission to use the Tree Spawner Tool.");
+            // Check if the tree Spawner tool is enabled
+            if (Config.TREE_SPAWNER_ENABLED) {
+                player.closeInventory();
+                Logger.info(player.getDisplayName() + "&2 clicked Tree Spawner when it was enabled, return.");
                 return;
             }
+
+            Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " clicked Tree Spawner tool, however it is disabled. Closing inventory");
+            Logger.info(player.getDisplayName() + "&2 clicked Tree Spawner when it was disabled, closed inventory.");
+            player.closeInventory();
+            // TODO: Create lang for message
+            Lang.send(player, Lang.DISABLED_COMMAND
+                .replace("{getDisabledName}", "Tree Spawner"));
 
             // Give player tree spawner tool
             // TODO: Create class/method for spawning in tools
-            player.closeInventory();
+
 
             // TODO: Create particles effects
             // TODO: Create cool down for tool

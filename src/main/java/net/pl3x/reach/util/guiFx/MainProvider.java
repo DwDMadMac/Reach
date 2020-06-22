@@ -29,6 +29,12 @@ public class MainProvider implements InventoryProvider {
         inventoryContents.set(0,2,ClickableItem.of( portalItem.getItem("main.tools-portal"), e -> {
             Portals.TOOLS_INVENTORY.open(player);
         }));
+
+        /*
+         * Open Weapons Portal
+         *
+         * TODO: Create Weapons Portal
+         */
     }
 
     @Override

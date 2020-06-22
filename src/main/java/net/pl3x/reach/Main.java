@@ -33,8 +33,8 @@ public class Main extends JavaPlugin {
         Lang.reload();
 
         // Register events
-        getServer().getPluginManager().registerEvents(new MainPortalListener(this), this);
-        getServer().getPluginManager().registerEvents(new ToolsPortalListener(this), this);
+//        getServer().getPluginManager().registerEvents(new MainPortalListener(this), this);
+//        getServer().getPluginManager().registerEvents(new ToolsPortalListener(this), this);
 
         // Register commands
         getCommand("reach").setExecutor(new CmdReload(this));
