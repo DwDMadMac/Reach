@@ -1,15 +1,11 @@
 package net.pl3x.reach.configuration;
 
-import com.google.common.base.Throwables;
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
 import net.pl3x.reach.Main;
-import net.pl3x.reach.util.Logger;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 /**
@@ -18,11 +14,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
  * Here you will find all the default language options
  */
 public class Lang {
-    private static File configFile;
-    private static YamlConfiguration config;
-
     private static final String HEADER = "Main language file for Reach.";
-
     public static String COMMAND_NO_PERMISSION;
     public static String PLAYER_COMMAND;
     public static String DISABLED_COMMAND;
@@ -31,63 +23,30 @@ public class Lang {
      * Apply the language options
      */
     private static void init() {
-        COMMAND_NO_PERMISSION = getString("command-no-permission", "&4You do not have permission for that command!");
-        PLAYER_COMMAND = getString("player-command","&4This command is only available to players!");
-        DISABLED_COMMAND = getString("disabled-command","&cThe {getDisabledNamed} &cis disabled.");
+        COMMAND_NO_PERMISSION = config.getString("command-no-permission", "&4You do not have permission for that command!");
+        PLAYER_COMMAND = config.getString("player-command","&4This command is only available to players!");
+        DISABLED_COMMAND = config.getString("disabled-command","&cThe {getDisabledNamed} &cis disabled.");
     }
 
 
     // ############################  DO NOT EDIT BELOW THIS LINE  ############################
+
+    private static Main plugin = Main.getInstance();
+    private static String langFile = Config.LANGUAGE_FILE;
+    private static File configFile = new File(plugin.getDataFolder(), langFile);
+    private static FileConfiguration config;
 
     /**
      * Reload the language file
      */
     @SuppressWarnings("deprecation")
     public static void reload() {
-        Main plugin = Main.getInstance();
-        if (configFile == null) {
-            configFile = new File(plugin.getDataFolder(), Config.LANGUAGE_FILE);
+        if (!configFile.exists()) {
+            plugin.saveResource(langFile, false);
         }
-
-        config = new YamlConfiguration();
-
-        try {
-            config.load(configFile);
-        } catch (IOException ignore) {
-            if (Config.DEBUG_MODE) {
-                Logger.debug("onLangReload | IOException occurred, printStackTrace() below.");
-                ignore.printStackTrace();
-            }
-        } catch (InvalidConfigurationException ex) {
-            if (Config.DEBUG_MODE) {
-                Logger.debug("onLangReload | InvalidConfigurationException occurred, printStackTrace() below.");
-                ex.printStackTrace();
-            }
-            Bukkit.getLogger().log(Level.SEVERE, "Could not load " + Config.LANGUAGE_FILE + ", please correct your syntax errors", ex);
-            throw Throwables.propagate(ex);
-        }
+        config = YamlConfiguration.loadConfiguration(configFile);
         config.options().header(HEADER);
-        config.options().copyDefaults(true);
-
         Lang.init();
-
-        try {
-            config.save(configFile);
-        } catch (IOException ex) {
-            Bukkit.getLogger().log(Level.SEVERE, "Could not save " + configFile, ex);
-        }
-    }
-
-    /**
-     * Gets the string path and the option that is set String with that path
-     *
-     * @param path Get String Path
-     * @param def Path message
-     * @return Return the String path and path message
-     */
-    private static String getString(String path, String def) {
-        config.addDefault(path, def);
-        return config.getString(path, config.getString(path));
     }
 
     /**
@@ -122,6 +81,7 @@ public class Lang {
      * @param str String to colorize
      * @return Return a colorized string
      */
+    // TODO: Figure out why the new line is disappearing!! !IMPORTANT!
     public static String colorize(String str) {
         if (str == null) {
             return "";
