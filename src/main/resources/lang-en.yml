@@ -1,6 +1,6 @@
 ######
 #### General/Misc Lang
 ######
-command-no-permission: "&4You do not have permission for that command!"
+command-no-permission: "&4You do not have permission to use {getCommand} command!"
 player-command: "&4This command is only available to players!"
 disabled-command: "&cThe {getDisabledNamed} &cis disabled."

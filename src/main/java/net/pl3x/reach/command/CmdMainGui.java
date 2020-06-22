@@ -75,7 +75,8 @@ public class CmdMainGui implements TabExecutor {
 
         // Check if player has proper permission
         if (!target.hasPermission("command.reach.portals")){
-            Lang.send(target, Lang.COMMAND_NO_PERMISSION);
+            Lang.send(target, Lang.COMMAND_NO_PERMISSION
+            .replace("{getCommand}", "Portal"));
             return true;
         }
 

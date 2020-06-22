@@ -23,7 +23,7 @@ public class Lang {
      * Apply the language options
      */
     private static void init() {
-        COMMAND_NO_PERMISSION = config.getString("command-no-permission", "&4You do not have permission for that command!");
+        COMMAND_NO_PERMISSION = config.getString("command-no-permission", "&4You do not have permission to use {getCommand}!");
         PLAYER_COMMAND = config.getString("player-command","&4This command is only available to players!");
         DISABLED_COMMAND = config.getString("disabled-command","&cThe {getDisabledNamed} &cis disabled.");
     }

@@ -64,7 +64,8 @@ public class CmdReload implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("command.reach.reload")){
-            Lang.send(sender, Lang.COMMAND_NO_PERMISSION);
+            Lang.send(sender, Lang.COMMAND_NO_PERMISSION
+                .replace("{getCommand}", "Reload"));
             return true;
         }
 
