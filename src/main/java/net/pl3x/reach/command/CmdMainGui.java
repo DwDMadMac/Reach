@@ -1,22 +1,23 @@
 package net.pl3x.reach.command;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import net.pl3x.reach.Main;
 import net.pl3x.reach.configuration.Lang;
 
-import net.pl3x.reach.util.CustomOptions;
-import net.pl3x.reach.util.customGui.MainPortal;
+import net.pl3x.reach.util.Logger;
+import net.pl3x.reach.util.guiFx.Portals;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
-import static net.pl3x.reach.util.customGui.MainPortal.createMainPortal;
-
 public class CmdMainGui implements TabExecutor {
-    private Main plugin;
+    private Main plugin = Main.getInstance();
+    private List<String> portals = Arrays.asList("main", "tools", "weapons");
 
     /**
      * Initialize reach instance
@@ -38,9 +39,9 @@ public class CmdMainGui implements TabExecutor {
      */
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        if ( args.length == 1 && "main".startsWith(args[0].toLowerCase()) && sender.hasPermission("command.reach.portal.main") ) {
-            return Collections.singletonList("main");
-        }
+        if (args.length == 1 && sender.hasPermission("command.reach.portals"))
+            return new ArrayList<>(portals);
+//            return portals.stream().collect(Collectors.toList());
 
         return Collections.emptyList();
     }
@@ -52,7 +53,7 @@ public class CmdMainGui implements TabExecutor {
      * <p>
      * This will hold all the features available for players to select from.
      * Once a player clicks an item inside the Reach Portal (gui), depending on
-     * the feature, a new portal (custom inventory) will appear or an item will be placed inside
+     * the feature, a new portal (custom inventory) will appear, or an item will be placed inside
      * their inventory for usage
      *
      * @param sender Get sender
@@ -73,19 +74,29 @@ public class CmdMainGui implements TabExecutor {
         Player target = (Player) sender;
 
         // Check if player has proper permission
-        if (!target.hasPermission("command.reach.portal.main")){
+        if (!target.hasPermission("command.reach.portals")){
             Lang.send(target, Lang.COMMAND_NO_PERMISSION);
             return true;
         }
 
-        if (args.length > 0 && args[0].equalsIgnoreCase("main")) {
-            // Create custom inventory
-            CustomOptions[] portalItems = {CustomOptions.CUSTOM_TOOLS, CustomOptions.CUSTOM_WEAPONS};
-            createMainPortal(target, portalItems);
-            Lang.send(target, "Main Portal Opened?");
+        // Check to see if the target main hand is empty
+        if (!target.getInventory().getItemInMainHand().getType().isEmpty()){
+            Logger.debug("onToolsPortalClick | " + target.getDisplayName() + " main hand is not empty, cannot place tool in hand. Return.");
+            // TODO: Create lang for message
+            Lang.send(target, "Your hand is not empty, tool cannot be placed. Cancelling. Please empty main hand and try again.");
+            target.closeInventory();
+            return true;
+        }
+
+        if (args.length > 0) {
+            if (args[0].equalsIgnoreCase("main"))
+                Portals.MAIN_INVENTORY.open(target);
+            else if (args[0].equalsIgnoreCase("tools"))
+                Portals.TOOLS_INVENTORY.open(target);
+            else if (args[0].equalsIgnoreCase("weapons"))
+                Portals.WEAPONS_INVENTORY.open(target);
         }
 
         return true;
     }
-
 }

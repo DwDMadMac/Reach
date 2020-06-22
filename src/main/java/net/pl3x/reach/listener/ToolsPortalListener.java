@@ -13,9 +13,9 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class ToolsPortalListener implements Listener {
-    private Main plugin;
-    private Player target;
+    private Main plugin = Main.getInstance();
     private String invName = Config.TOOLS_PORTAL_TITLE;
+    private Player target;
 
     /**
      * Initialize the plugin field

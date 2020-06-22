@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.pl3x.reach</groupId>
     <artifactId>Reach</artifactId>
-    <version>0.0.11_B-22</version>
+    <version>0.0.11_B-79</version>
     <packaging>jar</packaging>
 
     <properties>

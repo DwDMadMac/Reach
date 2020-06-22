@@ -4,7 +4,7 @@ version: "${project.version}"
 description: "${project.description} Coming Soon"
 author: "DwD_MadMac"
 api-version: "1.15"
-softdepend: []
+depend: [SmartInvs]
 
 commands:
   reach:
@@ -18,9 +18,18 @@ permissions:
   command.reach.reload:
     description: Allows you to reload the configuration files
     default: op
+  command.reach.portals:
+    description: Allows you to access all the portal command and its sub portals
+    default: op
   command.reach.portal.main:
-    description: Allows you to access reach portals
+    description: Allows you to access reach main portal
+    default: op
+  command.reach.portal.tools:
+    description: Allows you to access reach tools portal
     default: op
   command.reach.portal.tools.treeSpawner:
     description: Allows you to use the Tree Spawner Tool
+    default: op
+  command.reach.portal.weapons:
+    description: Allows you to access reach weapons portal
     default: op
