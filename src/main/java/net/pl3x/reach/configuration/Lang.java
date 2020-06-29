@@ -25,7 +25,7 @@ public class Lang {
     private static void init() {
         COMMAND_NO_PERMISSION = config.getString("command-no-permission", "&4You do not have permission to use {getCommand}!");
         PLAYER_COMMAND = config.getString("player-command","&4This command is only available to players!");
-        DISABLED_COMMAND = config.getString("disabled-command","&cThe {getDisabledNamed} &cis disabled.");
+        DISABLED_COMMAND = config.getString("disabled-command","&cThe {getDisabledCommand} &cis disabled.");
     }
 
 
@@ -33,13 +33,12 @@ public class Lang {
 
     private static Main plugin = Main.getInstance();
     private static String langFile = Config.LANGUAGE_FILE;
-    private static File configFile = new File(plugin.getDataFolder(), langFile);
+    private static File configFile = new File(plugin.getDataFolder(), langFile);;
     private static FileConfiguration config;
 
     /**
      * Reload the language file
      */
-    @SuppressWarnings("deprecation")
     public static void reload() {
         if (!configFile.exists()) {
             plugin.saveResource(langFile, false);
@@ -58,7 +57,9 @@ public class Lang {
     public static void send(CommandSender recipient, String message) {
         if (recipient != null) {
             for (String part : colorize(message).split("\n")) {
-                recipient.sendMessage(part);
+                if (part != null && !part.isEmpty()) {
+                    recipient.sendMessage(part);
+                }
             }
         }
     }
