@@ -53,7 +53,7 @@ public class Config {
         CLOSE_INVENTORY_SLOT = config.getInt("portal.main.close-inventory-slot", 0);
         CLOSE_INVENTORY_TYPE = config.getString("portal.main.close-inventory-type", "APPLE");
         CLOSE_INVENTORY_TITLE = config.getString("portal.main.close-inventory-title","&4Close Portal");
-        CLOSE_INVENTORY_LORE = config.getString("portal.main.close-inventory-lore","&7Click to close Main\n&7Reach Portal.\n");
+        CLOSE_INVENTORY_LORE = config.getString("portal.main.close-inventory-lore","\n&7Click to close Main\n&7Reach Portal.");
         // Main Portal: Tools Portal Icon
         TOOLS_PORTAL_SLOT = config.getInt("portal.main.tools-portal-slot",2);
         TOOLS_PORTAL_TYPE = config.getString("portal.main.tools-portal-type","DIAMOND_AXE");
