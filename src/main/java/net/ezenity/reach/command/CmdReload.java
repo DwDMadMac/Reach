@@ -1,11 +1,11 @@
-package net.pl3x.reach.command;
+package net.ezenity.reach.command;
 
 import java.util.Collections;
 import java.util.List;
-import net.pl3x.reach.Main;
-import net.pl3x.reach.configuration.Config;
-import net.pl3x.reach.configuration.Lang;
-import net.pl3x.reach.util.Logger;
+import net.ezenity.reach.Main;
+import net.ezenity.reach.configuration.Config;
+import net.ezenity.reach.configuration.Lang;
+import net.ezenity.reach.util.Logger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;

@@ -1,6 +1,6 @@
-package net.pl3x.reach.configuration;
+package net.ezenity.reach.configuration;
 
-import net.pl3x.reach.Main;
+import net.ezenity.reach.Main;
 import org.bukkit.configuration.file.FileConfiguration;
 
 /**

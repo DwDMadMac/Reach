@@ -1,6 +1,6 @@
-package net.pl3x.reach.util.particleFx;
+package net.ezenity.reach.util.particleFx;
 
-import net.pl3x.reach.util.Logger;
+import net.ezenity.reach.util.Logger;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;

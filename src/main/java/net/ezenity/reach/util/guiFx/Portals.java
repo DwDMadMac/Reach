@@ -1,4 +1,4 @@
-package net.pl3x.reach.util.guiFx;
+package net.ezenity.reach.util.guiFx;
 
 import fr.minuskube.inv.SmartInventory;
 

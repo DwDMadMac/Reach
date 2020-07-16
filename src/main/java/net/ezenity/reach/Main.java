@@ -1,12 +1,10 @@
-package net.pl3x.reach;
+package net.ezenity.reach;
 
-import net.pl3x.reach.command.CmdMainGui;
-import net.pl3x.reach.command.CmdReload;
-import net.pl3x.reach.configuration.Config;
-import net.pl3x.reach.configuration.Lang;
-import net.pl3x.reach.listener.MainPortalListener;
-import net.pl3x.reach.listener.ToolsPortalListener;
-import net.pl3x.reach.util.Logger;
+import net.ezenity.reach.command.CmdMainGui;
+import net.ezenity.reach.command.CmdReload;
+import net.ezenity.reach.util.Logger;
+import net.ezenity.reach.configuration.Config;
+import net.ezenity.reach.configuration.Lang;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**

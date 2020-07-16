@@ -1,6 +1,6 @@
-package net.pl3x.reach.util;
+package net.ezenity.reach.util;
 
-import net.pl3x.reach.configuration.Config;
+import net.ezenity.reach.configuration.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 

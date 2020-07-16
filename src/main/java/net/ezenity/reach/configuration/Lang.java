@@ -1,7 +1,8 @@
-package net.pl3x.reach.configuration;
+package net.ezenity.reach.configuration;
 
 import java.io.File;
-import net.pl3x.reach.Main;
+
+import net.ezenity.reach.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;

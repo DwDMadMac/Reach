@@ -1,16 +1,4 @@
-package net.pl3x.reach.listener;
-
-import net.pl3x.reach.Main;
-import net.pl3x.reach.configuration.Config;
-import net.pl3x.reach.configuration.Lang;
-import net.pl3x.reach.util.Logger;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.inventory.ItemStack;
+package net.ezenity.reach.listener;
 
 public class MainPortalListener {}
 

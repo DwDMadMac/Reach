@@ -1,15 +1,14 @@
-package net.pl3x.reach.util.guiFx;
+package net.ezenity.reach.util.guiFx;
 
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
-import net.pl3x.reach.configuration.Config;
-import net.pl3x.reach.configuration.Lang;
-import net.pl3x.reach.util.Logger;
+import net.ezenity.reach.util.particleFx.ParticleSpawnedTask;
+import net.ezenity.reach.configuration.Config;
+import net.ezenity.reach.configuration.Lang;
+import net.ezenity.reach.util.Logger;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
-
-import static net.pl3x.reach.util.particleFx.ParticleSpawnedTask.setParticleTask;
 
 /**
  * ToolsProvider
@@ -44,7 +43,7 @@ public class ToolsProvider implements InventoryProvider {
                 return;
             }
 
-            setParticleTask(player, Particle.DOLPHIN,"sphere");
+            ParticleSpawnedTask.setParticleTask(player, Particle.DOLPHIN,"sphere");
 
             // TODO: Create class/method for spawning in tools
             // TODO: Create cool down for tool

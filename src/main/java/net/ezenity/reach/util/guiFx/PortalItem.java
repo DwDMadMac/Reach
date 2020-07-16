@@ -1,8 +1,9 @@
-package net.pl3x.reach.util.guiFx;
+package net.ezenity.reach.util.guiFx;
 
 import fr.minuskube.inv.content.InventoryContents;
-import net.pl3x.reach.Main;
-import net.pl3x.reach.configuration.Lang;
+import net.ezenity.reach.configuration.Config;
+import net.ezenity.reach.Main;
+import net.ezenity.reach.configuration.Lang;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -19,7 +20,7 @@ public class PortalItem extends CustomItemStack {
 
     /**
      * Get a custom item from the configuration file. Just add in the item name exactly how it is
-     * inside the config.yml {@link net.pl3x.reach.configuration.Config} without the suffix declaration,
+     * inside the config.yml {@link Config} without the suffix declaration,
      * when calling the getItem() method. Usage can be viewed
      * {@link MainProvider#init(Player, InventoryContents)}
      * <p>
