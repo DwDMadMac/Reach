@@ -18,7 +18,7 @@ import org.bukkit.entity.Player;
  * clicks one of the tool items.
  */
 public class ToolsProvider implements InventoryProvider {
-    private PortalItem portalItem = new PortalItem();
+    private final PortalItem portalItem = new PortalItem();
 
     @Override
     public void init(Player player, InventoryContents inventoryContents) {
@@ -43,7 +43,7 @@ public class ToolsProvider implements InventoryProvider {
                 return;
             }
 
-            ParticleSpawnedTask.setParticleTask(player, Particle.DOLPHIN,"sphere");
+            ParticleSpawnedTask.setParticleTask(player, Particle.DOLPHIN,"sphere", 10, 2);
 
             // TODO: Create class/method for spawning in tools
             // TODO: Create cool down for tool
