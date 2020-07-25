@@ -2,6 +2,10 @@ package net.ezenity.reach.util.guiFx;
 
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * Abstract class used for creating a get item method using a string. To see how this can be utilized
+ * refer to {@link PortalItem}.
+ */
 public abstract class CustomItemStack {
     /**
      * Gets the given custom itemstack. Since we do not know what the given itemstack
