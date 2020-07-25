@@ -5,9 +5,10 @@ debug-mode: true
 color-logs: true
 
 # Enable misc logging alerts in console output
-info-logging: true
-warn-logging: true
-error-logging: true
+logging:
+  info: true
+  warn: true
+  error: true
 
 # Language file (for translations)
 language-file: lang-en.yml
@@ -19,22 +20,27 @@ portal:
     # Main portal title
     portal-title: "Main Reach Portal"
     # Item to close the inventory
-    close-inventory-slot: 0
-    close-inventory-type: "APPLE"
-    close-inventory-title: "&4Close Inventory"
-    close-inventory-lore:
-      - "&7Click to close Main"
-      - "&7Reach Portal."
+    close-inventory:
+      slot: 0
+      type: "APPLE"
+      title: "&4Close Inventory"
+      lore:
+        - "&7Click to close Main"
+        - "&7Reach Portal."
     # Item to open up the Tools Portal
-    tools-portal-slot: 2
-    tools-portal-type: "DIAMOND_AXE"
-    tools-portal-title: "&7Open Tools Portal"
-    tools-portal-lore:
-      - "Open Custom Tools Portal"
+    tools-portal:
+      slot: 2
+      type: "DIAMOND_AXE"
+      title: "&7Open Tools Portal"
+      lore:
+        - "Open Custom Tools Portal"
   tools:
-    tree-spawner-enabled: true
-    tree-spawner-slot: 2
-    tree-spawner-type: "WOODEN_AXE"
-    tree-spawner-title: "&4Tree Spawner"
-    tree-spawner-lore:
-      - "&7Spawn a custom tree."
+    tree-spawner:
+      enabled: true
+      slot: 2
+      cooldown: 40
+      particle-spawned-timer: 10
+      type: "WOODEN_AXE"
+      title: "&4Tree Spawner"
+      lore:
+        - "&7Spawn a custom tree."

@@ -17,24 +17,24 @@ import org.bukkit.configuration.file.YamlConfiguration;
 public class Lang {
     private static final String HEADER = "Main language file for Reach.";
     public static String COMMAND_NO_PERMISSION;
-    public static String PLAYER_COMMAND;
     public static String DISABLED_COMMAND;
+    public static String PLAYER_COMMAND;
 
     /**
      * Apply the language options
      */
     private static void init() {
-        COMMAND_NO_PERMISSION = config.getString("command-no-permission", "&4You do not have permission to use {getCommand}!");
-        PLAYER_COMMAND = config.getString("player-command","&4This command is only available to players!");
-        DISABLED_COMMAND = config.getString("disabled-command","&cThe {getDisabledCommand} &cis disabled.");
+        COMMAND_NO_PERMISSION = config.getString("command.no-permission", "&4You do not have permission to use {getCommand}!");
+        DISABLED_COMMAND = config.getString("command.disabled","&cThe {getDisabledCommand} &cis disabled.");
+        PLAYER_COMMAND = config.getString("command.player","&4This command is only available to players!");
     }
 
 
     // ############################  DO NOT EDIT BELOW THIS LINE  ############################
 
-    private static Main plugin = Main.getInstance();
-    private static String langFile = Config.LANGUAGE_FILE;
-    private static File configFile = new File(plugin.getDataFolder(), langFile);;
+    private static final Main plugin = Main.getInstance();
+    private static final String langFile = Config.LANGUAGE_FILE;
+    private static final File configFile = new File(plugin.getDataFolder(), langFile);;
     private static FileConfiguration config;
 
     /**
