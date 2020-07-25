@@ -6,24 +6,38 @@ import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+/**
+ * This class is a method for implementing particles using a {@link BukkitRunnable} solution.
+ */
 public class Particles extends BukkitRunnable {
+    /**
+     * Player. Used to get player UUID.
+     */
     private final Player player;
+    /**
+     * Particle. Used to grab the particle enums.
+     */
     private Particle particle;
+    /**
+     * Cancel. This boolean is used to cancel the runnable.
+     */
     private boolean cancel;
+    /**
+     * Particle Design. This String is used to determine the type of particle designed.
+     */
     private String particleDesign;
 
 
     /**
-     * Gets the player that enabled the particle and set
-     * the particle that is configured inside the config
-     * file.
+     * Gets the player that enabled the particle and set the particle that is configured
+     * inside the config file.
      *
      * @param player get player who enabled particle
      * @param particle spawned particle
      */
     public Particles(Player player, Particle particle, String particleDesign) {
         this.player = player;
-        this.particleDesign = particleDesign;
+        setParticleDesign(particleDesign);
         Particle particleType = null;
 
         try {
@@ -33,13 +47,27 @@ public class Particles extends BukkitRunnable {
             e.printStackTrace();
             setCancel(true);
         }
+
         setParticle(particleType);
     }
 
+    /**
+     * This method will get the given string particle design. Each particle design is created within its own
+     * method using mathematical computation. The sole purpose of this method is used within a switch statement
+     * to ensure that the correct particle design is selected with the runnable is activated.
+     *
+     * @return particle design
+     */
     public String getParticleDesign() {
         return particleDesign;
     }
 
+    /**
+     * This method is used to set the given string particle design. When a new particle object is created, this
+     * method is implemented with the given particle design string.
+     *
+     * @param particleDesign set particle design
+     */
     public void setParticleDesign(String particleDesign) {
         this.particleDesign = particleDesign;
     }
@@ -111,7 +139,9 @@ public class Particles extends BukkitRunnable {
     }
 
     /**
-     * Run the given particle type
+     * Run the given particle type using a switch statement. If a particle type that is known
+     * to crash the client, the runnable will cancel and and error message will be outputted
+     * to the console.
      */
     @Override
     public void run() {
@@ -127,7 +157,7 @@ public class Particles extends BukkitRunnable {
                 spawnSphere();
                 break;
             case "test":
-//                spawnShape(); // TODO
+                spawnOval(); // TODO
                 break;
             default:
                 break;
@@ -175,79 +205,18 @@ public class Particles extends BukkitRunnable {
         }
     }
 
-
-
-    private void spawnShape() {
-        for (double circles = 0; circles <= Math.PI; circles += Math.PI / 10){
+    /**
+     * TODO
+     */
+    private void spawnOval() {
+        for (double circles = 0; circles <= Math.PI; circles += Math.PI / 10) {
             double radius = Math.sin(circles);
             double y = Math.cos(circles);
-            for (double particleAmount = 0; particleAmount < Math.PI * 2; particleAmount += Math.PI / 4){
+            for (double particleAmount = 0; particleAmount < Math.PI * 2; particleAmount += Math.PI / 4) {
                 double x = Math.cos(particleAmount) * radius;
                 double z = Math.sin(particleAmount) * radius;
-                Location playerLoc = player.getLocation().add(x,y,z);
-                player.getWorld().spawnParticle(getParticle(), playerLoc.add(0,1,0), 1);
-            }
-        }
-//
-//        for (double polarAngle = 0.0; polarAngle < 360.0; polarAngle = polarAngle + 10.0){
-//            for (double elevationAngle = 0.0; elevationAngle < 180.0; elevationAngle = elevationAngle + 59.0){
-//                double dx = radius * Math.sin(Math.toRadians(elevationAngle)) * Math.cos(Math.toRadians(polarAngle));
-//                double dy = radius * Math.sin(Math.toRadians(elevationAngle)) * Math.sin(Math.toRadians(polarAngle));
-//                double dz = radius * Math.cos(Math.toRadians(elevationAngle));
-////                location = player.getLocation().add(dx,dy,dz);
-////                player.getWorld().spawnParticle(getParticle(), location.add());
-//                player.getWorld().spawnParticle(getParticle(), location, 1, dx, dy, dz);
-//            }
-//        }
-    }
-
-    public void getDesign(Player player, String particleDesign) {
-        if (particle.equals(Particle.DOLPHIN) && particleDesign.equalsIgnoreCase("sphere")) { // Sphere
-            /*
-             * New sphere Design
-             */
-//            coordinates = new double[11 + 10 * 2][];
-//            int arrayLocation = 0;
-//
-//            double y = player.getLocation().getY();
-//            double x = player.getLocation().getX();
-//            double z = player.getLocation().getZ();
-//
-//
-//
-//            for (double coord : coordinates[arrayLocation++]){
-//                coord = new double[] {x, y, z};
-//                Location playerLoc = player.getLocation().add(coord);
-//                player.spawnParticle(getParticle(), player.getLocation(coord));
-//            }
-
-
-            /*
-             * Old sphere design
-             */
-            for (double i = 0; i <= Math.PI; i += Math.PI / 10) { // Last digit being amount of circles
-                double radius = Math.sin(i);
-                double y = Math.cos(i);
-                for (double a = 0; a < Math.PI * 2; a += Math.PI / 60) {
-                    double x = Math.cos(a) * radius;
-                    double z = Math.sin(a) * radius;
-
-//                    player.getWorld().spawnParticle(getParticle(), player.getLocation().clone().add(x,y,z), 1);
-                    Location playerLoc = player.getLocation().add(x, y, z);
-                    player.spawnParticle(getParticle(), playerLoc.add(0, 1, 0), 1);
-                    player.getLocation().subtract(x, y, z);
-                }
-            }
-        } else  if (particle.equals(Particle.PORTAL) && particleDesign.equalsIgnoreCase("treeSpawner")) { // Tree Spawner
-            for (double i = 0; i <= Math.PI; i += Math.PI / 10){
-                double radius = Math.sin(i);
-                double y = Math.cos(i);
-                for (double a = 0; a < Math.PI * 2; a += Math.PI / 4){
-                    double x = Math.cos(a) * radius;
-                    double z = Math.sin(a) * radius;
-                    Location playerLoc = player.getLocation().add(x,y,z);
-                    player.getWorld().spawnParticle(getParticle(), playerLoc.add(0,1,0), 1);
-                }
+                Location playerLoc = player.getLocation().add(x, y, z);
+                player.getWorld().spawnParticle(getParticle(), playerLoc.add(0, 1, 0), 1);
             }
         }
     }
