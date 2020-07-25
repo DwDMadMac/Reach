@@ -81,7 +81,7 @@ public class CmdMainGui implements TabExecutor {
         }
 
         // Check to see if the target main hand is empty
-        if (!target.getInventory().getItemInMainHand().getType().isEmpty()){
+        if (!target.getInventory().getItemInMainHand().getType().isAir()){
             Logger.debug("onToolsPortalClick | " + target.getDisplayName() + " main hand is not empty, cannot place tool in hand. Return.");
             // TODO: Create lang for message
             Lang.send(target, "Your hand is not empty, tool cannot be placed. Cancelling. Please empty main hand and try again.");
