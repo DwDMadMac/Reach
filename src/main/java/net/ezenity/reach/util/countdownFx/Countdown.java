@@ -1,4 +1,4 @@
-package net.ezenity.reach.util;
+package net.ezenity.reach.util.countdownFx;
 
 import net.ezenity.reach.util.countdownFx.CustomIndex;
 import org.bukkit.Particle;
@@ -20,7 +20,7 @@ import java.util.UUID;
  *
  * @author anthonymmacallister
  */
-public class CountdownFx {
+public class Countdown {
     /**
      * Countdown map. Create a hashmap using two string objects from our CustomIndex class.
      */
