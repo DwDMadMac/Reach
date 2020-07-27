@@ -44,3 +44,9 @@ portal:
       title: "&4Tree Spawner"
       lore:
         - "&7Spawn a custom tree."
+      spawned:
+        type: "WOODEN_AXE"
+        title: "&2Tree Spawner"
+        lore:
+          - "&7Click location where you would"
+          - "&7like to spawn your &6Tree Type&7."
