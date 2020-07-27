@@ -7,7 +7,7 @@ import java.util.Objects;
  * to manipulate two string objects which will return an integer
  * type value, representing the returned index. To see how this class
  * can be implemented through usage, please refer to:
- * {@link net.ezenity.reach.util.CountdownFx}
+ * {@link Countdown}
  */
 public class CustomIndex {
     /**
