@@ -3,6 +3,7 @@ package net.ezenity.reach.util.guiFx;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
+import net.ezenity.reach.util.SpawnedItem;
 import net.ezenity.reach.util.particleFx.ParticleSpawnedTask;
 import net.ezenity.reach.configuration.Config;
 import net.ezenity.reach.configuration.Lang;
@@ -45,8 +46,8 @@ public class ToolsProvider implements InventoryProvider {
 
             ParticleSpawnedTask.setParticleTask(player, Particle.DOLPHIN,"sphere", 10, 2);
 
-            // TODO: Create class/method for spawning in tools
-            // TODO: Create cool down for tool
+            new SpawnedItem(player, "tools.tree-spawner", 00);
+
         } ));
 
         // TODO: Make Flower Spawner inventory contents
