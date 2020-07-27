@@ -13,8 +13,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
-public class PortalItem extends CustomItemStack {
-    private Main plugin = Main.getInstance();
+public class PortalItem implements CustomItemStack {
+    private final Main plugin = Main.getInstance();
     private boolean slotRow;
     private boolean slotCol;
 
@@ -37,13 +37,13 @@ public class PortalItem extends CustomItemStack {
      */
     @Override
     public ItemStack getItem(String itemString) {
-        String itemType = (String) plugin.getConfig().get("portal." + itemString + "-type");
+        String itemType = (String) plugin.getConfig().get("portal." + itemString + ".type");
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(Material.getMaterial(Objects.requireNonNull(itemType))));
         ItemMeta itemMeta = itemStack.getItemMeta();
+        Objects.requireNonNull(itemMeta).setDisplayName(Lang.colorize(plugin.getConfig().getString("portal." + itemString + ".title")));
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        itemMeta.setDisplayName(Lang.colorize(plugin.getConfig().getString("portal." + itemString + "-title")));
         List<String> itemLore = new ArrayList<>();
-        for (String newLines : plugin.getConfig().getStringList("portal." + itemString + "-lore")) {
+        for (String newLines : plugin.getConfig().getStringList("portal." + itemString + ".lore")) {
             itemLore.add(ChatColor.translateAlternateColorCodes('&', newLines));
         }
         itemMeta.setLore(itemLore);
