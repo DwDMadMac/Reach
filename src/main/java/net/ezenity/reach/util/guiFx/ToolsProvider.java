@@ -3,7 +3,6 @@ package net.ezenity.reach.util.guiFx;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
-import net.ezenity.reach.util.SpawnedItem;
 import net.ezenity.reach.util.particleFx.ParticleSpawnedTask;
 import net.ezenity.reach.configuration.Config;
 import net.ezenity.reach.configuration.Lang;
@@ -19,13 +18,13 @@ import org.bukkit.entity.Player;
  * clicks one of the tool items.
  */
 public class ToolsProvider implements InventoryProvider {
-    private final PortalItem portalItem = new PortalItem();
+    private final SpawnedItem spawnedItem = new SpawnedItem();
 
     @Override
     public void init(Player player, InventoryContents inventoryContents) {
         // Tree Spawner Tool
-        inventoryContents.set(0,0, ClickableItem.of( portalItem.getItem("tools.tree-spawner"), e -> {
-            // Check if target has permissions
+        inventoryContents.set(0,0, ClickableItem.of( spawnedItem.getItem("tools.tree-spawner"), e -> {
+            // Check if target has permissions TODO: Create abstract solution
             if (!player.hasPermission("command.reach.portal.tools.treeSpawner")) {
                 Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " Does not have permission to use the Tree Spawner Tool. Return");
                 // TODO Create lang for message
@@ -34,7 +33,7 @@ public class ToolsProvider implements InventoryProvider {
                 return;
             }
 
-            // Check if the tree Spawner tool is enabled
+            // Check if the tree Spawner tool is enabled TODO: Create abstract solition
             if (!Config.TREE_SPAWNER_ENABLED) {
                 Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " clicked Tree Spawner tool, however it is disabled. Closing inventory");
                 Logger.info(player.getDisplayName() + "&2 clicked Tree Spawner when it was disabled, closed inventory.");
@@ -46,7 +45,8 @@ public class ToolsProvider implements InventoryProvider {
 
             ParticleSpawnedTask.setParticleTask(player, Particle.DOLPHIN,"sphere", 10, 2);
 
-            new SpawnedItem(player, "tools.tree-spawner", 00);
+            // Spawn custom item in players hand
+            spawnedItem.setItem(player, "tools.tree-spawner.spawned", 00);
 
         } ));
 

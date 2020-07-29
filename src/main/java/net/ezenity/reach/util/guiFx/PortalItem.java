@@ -13,10 +13,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
 
-public class PortalItem implements CustomItemStack {
+/**
+ * An abstract class for getting an item using configuration settings.
+ */
+public abstract class PortalItem extends CustomItemStack {
     private final Main plugin = Main.getInstance();
-    private boolean slotRow;
-    private boolean slotCol;
 
     /**
      * Get a custom item from the configuration file. Just add in the item name exactly how it is
@@ -42,6 +43,13 @@ public class PortalItem implements CustomItemStack {
         ItemMeta itemMeta = itemStack.getItemMeta();
         Objects.requireNonNull(itemMeta).setDisplayName(Lang.colorize(plugin.getConfig().getString("portal." + itemString + ".title")));
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+//        itemMeta.setCustomModelData(itemIdentifier);
+//        if (this.enchantment != null)
+//            itemMeta.addEnchant(enchantment, enchantLevel, levelRestrict); // TODO: Make method for multiple enchantment usages
+//        if (this.itemFlag != null)
+//            itemMeta.addItemFlags(itemFlag);// TODO: Make method to loop through for multiple Item Flag additions
+//        if (this.)
+//            itemMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, ); // TODO: Make method for a system of player buffs & debuffs (check Wiki)
         List<String> itemLore = new ArrayList<>();
         for (String newLines : plugin.getConfig().getStringList("portal." + itemString + ".lore")) {
             itemLore.add(ChatColor.translateAlternateColorCodes('&', newLines));
