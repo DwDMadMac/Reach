@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
  * This class will be a source for getting the given item located in the config file as well
  * as setting an item to a players main hand.
  */
-public class SpawnedItem extends PortalItem {
+public class SpawnedItem extends CreateItem {
 
     /**
      * Sets the item to the given players main hand.
