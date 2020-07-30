@@ -33,7 +33,7 @@ public class ToolsProvider implements InventoryProvider {
                 return;
             }
 
-            // Check if the tree Spawner tool is enabled TODO: Create abstract solition
+            // Check if the tree Spawner tool is enabled TODO: Create abstract solution
             if (!Config.TREE_SPAWNER_ENABLED) {
                 Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " clicked Tree Spawner tool, however it is disabled. Closing inventory");
                 Logger.info(player.getDisplayName() + "&2 clicked Tree Spawner when it was disabled, closed inventory.");
@@ -43,10 +43,20 @@ public class ToolsProvider implements InventoryProvider {
                 return;
             }
 
-            ParticleSpawnedTask.setParticleTask(player, Particle.DOLPHIN,"sphere", 10, 2);
+            ParticleSpawnedTask.setParticleTask(
+                    player,
+                    Particle.DOLPHIN,
+                    Config.TREE_SPAWNER_PARTICLE_DESIGN,
+                    Config.TREE_SPAWNER_COOLDOWN,
+                    Config.TREE_SPAWNER_PARTICLE_SPAWNED_TIMER
+            );
 
             // Spawn custom item in players hand
-            spawnedItem.setItem(player, "tools.tree-spawner.spawned", 00);
+            spawnedItem.setItem(
+                    player,
+                    "tools.tree-spawner.spawned",
+                    Config.TREE_SPAWNER_SPAWNED_IDENTIFIER
+            );
 
         } ));
 

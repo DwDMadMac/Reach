@@ -39,12 +39,15 @@ portal:
       enabled: true
       slot: 2
       cooldown: 40
-      particle-spawned-timer: 10
+      particle:
+        spawned-timer: 10
+        design: "sphere"
       type: "WOODEN_AXE"
       title: "&4Tree Spawner"
       lore:
         - "&7Spawn a custom tree."
       spawned:
+        identifier: 00
         type: "WOODEN_AXE"
         title: "&2Tree Spawner"
         lore:

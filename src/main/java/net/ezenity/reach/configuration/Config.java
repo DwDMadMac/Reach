@@ -33,9 +33,11 @@ public class Config {
     public static int TREE_SPAWNER_SLOT;
     public static int TREE_SPAWNER_COOLDOWN;
     public static int TREE_SPAWNER_PARTICLE_SPAWNED_TIMER;
+    public static String TREE_SPAWNER_PARTICLE_DESIGN;
     public static String TREE_SPAWNER_TYPE;
     public static String TREE_SPAWNER_TITLE;
     public static String TREE_SPAWNER_LORE;
+    public static int TREE_SPAWNER_SPAWNED_IDENTIFIER;
     public static String TREE_SPAWNER_SPAWNED_TYPE;
     public static String TREE_SPAWNER_SPAWNED_TITLE;
     public static String TREE_SPAWNER_SPAWNED_LORE;
@@ -68,10 +70,12 @@ public class Config {
         TREE_SPAWNER_ENABLED = config.getBoolean("portal.tools.tree-spawner.enabled",true);
         TREE_SPAWNER_SLOT = config.getInt("portal.tools.tree-spawner.slot",2);
         TREE_SPAWNER_COOLDOWN = config.getInt("portal.tools.tree-spawner.cooldown", 40);
-        TREE_SPAWNER_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.particle-spawned-timer", 10);
+        TREE_SPAWNER_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.particle.spawned-timer", 10);
+        TREE_SPAWNER_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.particle.design", "sphere");
         TREE_SPAWNER_TYPE = config.getString("portal.tools.tree-spawner.type","WOODEN_AXE");
         TREE_SPAWNER_TITLE = config.getString("portal.tools.tree-spawner.title","Tree Spawner");
         TREE_SPAWNER_LORE = config.getString("portal.tools.tree-spawner.lore","&7Spawn a custom tree");
+        TREE_SPAWNER_SPAWNED_IDENTIFIER = config.getInt("portal.tools.tree-spawner.spawned.identifier", 00);
         TREE_SPAWNER_SPAWNED_TYPE = config.getString("portal.tools.tree-spawner.spawned.type","WOODEN_AXE");
         TREE_SPAWNER_SPAWNED_TITLE = config.getString("portal.tools.tree-spawner.spawned.title","&2Tree Spawner");
         TREE_SPAWNER_SPAWNED_LORE = config.getString("portal.tools.tree-spawner.spawned.lore","&7Click location where you would\n&7like to spawn your &6Tree Type&7.");
