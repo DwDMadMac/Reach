@@ -16,14 +16,13 @@ import java.util.*;
 /**
  * An abstract class for getting an item using configuration settings.
  */
-public abstract class PortalItem extends CustomItemStack {
+public abstract class CreateItem extends CustomItemStack {
     private final Main plugin = Main.getInstance();
 
     /**
      * Get a custom item from the configuration file. Just add in the item name exactly how it is
-     * inside the config.yml {@link Config} without the suffix declaration,
-     * when calling the getItem() method. Usage can be viewed
-     * {@link MainProvider#init(Player, InventoryContents)}
+     * inside the config.yml {@link Config} without the suffix declaration, when calling the
+     * getItem() method. Usage can be viewed {@link MainProvider#init(Player, InventoryContents)}
      * <p>
      * Suffix Declarations:
      * <ul>
