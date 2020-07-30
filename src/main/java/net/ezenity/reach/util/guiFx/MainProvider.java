@@ -12,21 +12,21 @@ import org.bukkit.entity.Player;
  * initial provider before breaking down into the sub-inventories.
  */
 public class MainProvider implements InventoryProvider {
-    private PortalItem portalItem = new PortalItem();
+    private final SpawnedItem spawnedItem = new SpawnedItem();
 
     @Override
     public void init(Player player, InventoryContents inventoryContents) {
         /*
          * Close Inventory (Apple)
          */
-        inventoryContents.set(0,0, ClickableItem.of( portalItem.getItem("main.close-inventory"), e -> {
+        inventoryContents.set(0,0, ClickableItem.of( spawnedItem.getItem("main.close-inventory"), e -> {
             player.closeInventory();
         }));
 
         /*
          * Open Tools Portal
          */
-        inventoryContents.set(0,2,ClickableItem.of( portalItem.getItem("main.tools-portal"), e -> {
+        inventoryContents.set(0,2,ClickableItem.of( spawnedItem.getItem("main.tools-portal"), e -> {
             Portals.TOOLS_INVENTORY.open(player);
         }));
 
