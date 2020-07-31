@@ -13,7 +13,7 @@ public class Particles extends BukkitRunnable {
     /**
      * Player. Used to get player UUID.
      */
-    private final Player player;
+    private Player player;
     /**
      * Particle. Used to grab the particle enums.
      */
@@ -27,28 +27,32 @@ public class Particles extends BukkitRunnable {
      */
     private String particleDesign;
 
+    /**
+     * Particles Constructor. Initialize private variables.
+     */
+    public Particles() {
+        this.player = getPlayer();
+        this.particle = getParticle();
+        this.cancel = isCancelled();
+        this.particleDesign = getParticleDesign();
+    }
 
     /**
-     * Gets the player that enabled the particle and set the particle that is configured
-     * inside the config file.
+     * Get the player that enabled the particle.
      *
-     * @param player get player who enabled particle
-     * @param particle spawned particle
+     * @return player that enabled particle.
      */
-    public Particles(Player player, Particle particle, String particleDesign) {
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * Set the particle to the player initializing the particle
+     *
+     * @param player set player to particle
+     */
+    public void setPlayer(Player player) {
         this.player = player;
-        setParticleDesign(particleDesign);
-        Particle particleType = null;
-
-        try {
-            particleType = particle;
-        } catch (IllegalArgumentException e){
-            Logger.error("onParticles | Particle type invalid. Cancelling Particle task. Printstack below");
-            e.printStackTrace();
-            setCancel(true);
-        }
-
-        setParticle(particleType);
     }
 
     /**
@@ -82,12 +86,19 @@ public class Particles extends BukkitRunnable {
     }
 
     /**
-     * This will set the given particle type
+     * This will set the given particle type. If the particle type is invalid, print stacktrace & the particle
+     * event will be cancelled.
      *
      * @param particle get particle type
      */
     public void setParticle(Particle particle) {
-        this.particle = particle;
+        try {
+            this.particle = particle;
+        } catch (IllegalArgumentException e){
+            Logger.error("onParticles | Particle type invalid. Cancelling Particle task. Printstack below");
+            e.printStackTrace();
+            setCancel(true);
+        }
     }
 
     /**
@@ -217,6 +228,67 @@ public class Particles extends BukkitRunnable {
                 double z = Math.sin(particleAmount) * radius;
                 Location playerLoc = player.getLocation().add(x, y, z);
                 player.getWorld().spawnParticle(getParticle(), playerLoc.add(0, 1, 0), 1);
+            }
+        }
+//
+//        for (double polarAngle = 0.0; polarAngle < 360.0; polarAngle = polarAngle + 10.0){
+//            for (double elevationAngle = 0.0; elevationAngle < 180.0; elevationAngle = elevationAngle + 59.0){
+//                double dx = radius * Math.sin(Math.toRadians(elevationAngle)) * Math.cos(Math.toRadians(polarAngle));
+//                double dy = radius * Math.sin(Math.toRadians(elevationAngle)) * Math.sin(Math.toRadians(polarAngle));
+//                double dz = radius * Math.cos(Math.toRadians(elevationAngle));
+////                location = player.getLocation().add(dx,dy,dz);
+////                player.getWorld().spawnParticle(getParticle(), location.add());
+//                player.getWorld().spawnParticle(getParticle(), location, 1, dx, dy, dz);
+//            }
+//        }
+    }
+    public void getDesign(Player player, String particleDesign) {
+        if (particle.equals(Particle.DOLPHIN) && particleDesign.equalsIgnoreCase("sphere")) { // Sphere
+            /*
+             * New sphere Design
+             */
+//            coordinates = new double[11 + 10 * 2][];
+//            int arrayLocation = 0;
+//
+//            double y = player.getLocation().getY();
+//            double x = player.getLocation().getX();
+//            double z = player.getLocation().getZ();
+//
+//
+//
+//            for (double coord : coordinates[arrayLocation++]){
+//                coord = new double[] {x, y, z};
+//                Location playerLoc = player.getLocation().add(coord);
+//                player.spawnParticle(getParticle(), player.getLocation(coord));
+//            }
+
+
+            /*
+             * Old sphere design
+             */
+            for (double i = 0; i <= Math.PI; i += Math.PI / 10) { // Last digit being amount of circles
+                double radius = Math.sin(i);
+                double y = Math.cos(i);
+                for (double a = 0; a < Math.PI * 2; a += Math.PI / 60) {
+                    double x = Math.cos(a) * radius;
+                    double z = Math.sin(a) * radius;
+
+//                    player.getWorld().spawnParticle(getParticle(), player.getLocation().clone().add(x,y,z), 1);
+                    Location playerLoc = player.getLocation().add(x, y, z);
+                    player.spawnParticle(getParticle(), playerLoc.add(0, 1, 0), 1);
+                    player.getLocation().subtract(x, y, z);
+                }
+            }
+        } else  if (particle.equals(Particle.PORTAL) && particleDesign.equalsIgnoreCase("treeSpawner")) { // Tree Spawner
+            for (double i = 0; i <= Math.PI; i += Math.PI / 10){
+                double radius = Math.sin(i);
+                double y = Math.cos(i);
+                for (double a = 0; a < Math.PI * 2; a += Math.PI / 4){
+                    double x = Math.cos(a) * radius;
+                    double z = Math.sin(a) * radius;
+                    Location playerLoc = player.getLocation().add(x,y,z);
+                    player.getWorld().spawnParticle(getParticle(), playerLoc.add(0,1,0), 1);
+                }
             }
         }
     }

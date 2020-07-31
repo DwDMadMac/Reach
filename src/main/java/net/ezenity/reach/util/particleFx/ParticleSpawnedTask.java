@@ -16,8 +16,6 @@ import static net.ezenity.reach.util.countdownFx.Countdown.*;
  * This class is used for custom particle spawning. Each particle is spawned as a executor which will be used
  * asynchronously and in the event the same particle is being spawned for the given hash code, this particle
  * task will not execute and continue to its pre-requites code.
- *
- * TODO: Re-format into abstract
  */
 public class ParticleSpawnedTask {
     /**
@@ -34,6 +32,10 @@ public class ParticleSpawnedTask {
      * We use a {@link ScheduledFuture} to represent the results of our asynchronous delayed particle computation.
      */
     private static ScheduledFuture<?> PARTICLE_HANDLER;
+    /**
+     * Particles instance. Used to create a custom particle utilizing a serious of getters and setters.
+     */
+    private static final Particles particles = new Particles();
 
     /**
      * We will use this method to set our given particle to the plausible demand. The particle will be set using an
@@ -54,11 +56,16 @@ public class ParticleSpawnedTask {
             Logger.info("Count Time  " + getCountdown(player.getUniqueId(), particleDesign));
             Logger.info("System Time " + System.currentTimeMillis());
         } else {
-            Particles customParticle = new Particles(player, particle, particleDesign);
-            PARTICLE_HANDLER = THREAD_EXECUTOR.scheduleAtFixedRate(customParticle, 0, 250, TimeUnit.MILLISECONDS);
+            particles.setParticle(particle);
+            particles.setParticleDesign(particleDesign);
+            particles.setPlayer(player);
+
+            PARTICLE_HANDLER = THREAD_EXECUTOR.scheduleAtFixedRate(particles, 0, 250, TimeUnit.MILLISECONDS);
+
             THREAD_EXECUTOR.schedule(() -> {
                 PARTICLE_HANDLER.cancel(true);
             }, particleSpawnedTimer, TimeUnit.SECONDS);
+
             Logger.info("==============================================================");
             Logger.info("==============================================================");
             Logger.info("Countdown no longer activated, create particle");
