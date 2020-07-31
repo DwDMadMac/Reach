@@ -57,7 +57,6 @@ public class ToolsProvider implements InventoryProvider {
                     "tools.tree-spawner.spawned",
                     Config.TREE_SPAWNER_SPAWNED_IDENTIFIER
             );
-            spawnedItem.setInHand();
 
         } ));
 
