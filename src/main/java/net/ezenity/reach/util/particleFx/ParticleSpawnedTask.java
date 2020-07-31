@@ -29,11 +29,11 @@ public class ParticleSpawnedTask {
      * service backed by a thread-pool of size one. If we need to increase the pool size, we can by simply passing a larger
      * value than one.
      */
-    private final ScheduledExecutorService THREAD_EXECUTOR = Executors.newScheduledThreadPool(1);
+    private static final ScheduledExecutorService THREAD_EXECUTOR = Executors.newScheduledThreadPool(1);
     /**
      * We use a {@link ScheduledFuture} to represent the results of our asynchronous delayed particle computation.
      */
-    private ScheduledFuture<?> PARTICLE_HANDLER;
+    private static ScheduledFuture<?> PARTICLE_HANDLER;
 
     /**
      * We will use this method to set our given particle to the plausible demand. The particle will be set using an
@@ -49,7 +49,7 @@ public class ParticleSpawnedTask {
      * @param cooldown get cooldown in seconds
      * @param particleSpawnedTimer get particle spawn rate in seconds
      */
-    public void setParticleTask(Player player, Particle particle, String particleDesign, int cooldown, int particleSpawnedTimer) { // TODO: Rework particle param
+    public static void setParticleTask(Player player, Particle particle, String particleDesign, int cooldown, int particleSpawnedTimer) { // TODO: Rework particle param
         if (!(System.currentTimeMillis() > getCountdown(player.getUniqueId(), particleDesign))) {
             Logger.info("Count Time  " + getCountdown(player.getUniqueId(), particleDesign));
             Logger.info("System Time " + System.currentTimeMillis());
