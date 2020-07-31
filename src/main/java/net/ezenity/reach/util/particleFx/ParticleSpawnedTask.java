@@ -10,12 +10,14 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import static net.ezenity.reach.util.CountdownFx.*;
+import static net.ezenity.reach.util.countdownFx.Countdown.*;
 
 /**
  * This class is used for custom particle spawning. Each particle is spawned as a executor which will be used
  * asynchronously and in the event the same particle is being spawned for the given hash code, this particle
  * task will not execute and continue to its pre-requites code.
+ *
+ * TODO: Re-format into abstract
  */
 public class ParticleSpawnedTask {
     /**
@@ -27,11 +29,11 @@ public class ParticleSpawnedTask {
      * service backed by a thread-pool of size one. If we need to increase the pool size, we can by simply passing a larger
      * value than one.
      */
-    private static final ScheduledExecutorService THREAD_EXECUTOR = Executors.newScheduledThreadPool(1);
+    private final ScheduledExecutorService THREAD_EXECUTOR = Executors.newScheduledThreadPool(1);
     /**
      * We use a {@link ScheduledFuture} to represent the results of our asynchronous delayed particle computation.
      */
-    private static ScheduledFuture<?> PARTICLE_HANDLER;
+    private ScheduledFuture<?> PARTICLE_HANDLER;
 
     /**
      * We will use this method to set our given particle to the plausible demand. The particle will be set using an
@@ -47,7 +49,7 @@ public class ParticleSpawnedTask {
      * @param cooldown get cooldown in seconds
      * @param particleSpawnedTimer get particle spawn rate in seconds
      */
-    public static void setParticleTask(Player player, Particle particle, String particleDesign, int cooldown, int particleSpawnedTimer) {
+    public void setParticleTask(Player player, Particle particle, String particleDesign, int cooldown, int particleSpawnedTimer) { // TODO: Rework particle param
         if (!(System.currentTimeMillis() > getCountdown(player.getUniqueId(), particleDesign))) {
             Logger.info("Count Time  " + getCountdown(player.getUniqueId(), particleDesign));
             Logger.info("System Time " + System.currentTimeMillis());

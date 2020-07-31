@@ -19,6 +19,7 @@ import org.bukkit.entity.Player;
  */
 public class ToolsProvider implements InventoryProvider {
     private final SpawnedItem spawnedItem = new SpawnedItem();
+    private final ParticleSpawnedTask particleSpawnedTask = new ParticleSpawnedTask();
 
     @Override
     public void init(Player player, InventoryContents inventoryContents) {
@@ -43,7 +44,7 @@ public class ToolsProvider implements InventoryProvider {
                 return;
             }
 
-            ParticleSpawnedTask.setParticleTask(
+            particleSpawnedTask.setParticleTask(
                     player,
                     Particle.DOLPHIN,
                     Config.TREE_SPAWNER_PARTICLE_DESIGN,
@@ -57,6 +58,7 @@ public class ToolsProvider implements InventoryProvider {
                     "tools.tree-spawner.spawned",
                     Config.TREE_SPAWNER_SPAWNED_IDENTIFIER
             );
+            spawnedItem.setInHand();
 
         } ));
 
