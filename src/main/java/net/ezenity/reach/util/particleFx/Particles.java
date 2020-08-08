@@ -1,15 +1,25 @@
 package net.ezenity.reach.util.particleFx;
 
+import de.slikey.effectlib.EffectManager;
+//import de.slikey.effectlib.effect.SphereEffect;
+import de.slikey.effectlib.util.MathUtils;
+import de.slikey.effectlib.util.VectorUtils;
+import net.ezenity.reach.Main;
 import net.ezenity.reach.util.Logger;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 
 /**
  * This class is a method for implementing particles using a {@link BukkitRunnable} solution.
  */
 public class Particles extends BukkitRunnable {
+    /**
+     *
+     */
+    private Main plugin = Main.getInstance();
     /**
      * Player. Used to get player UUID.
      */
@@ -26,6 +36,14 @@ public class Particles extends BukkitRunnable {
      * Particle Design. This String is used to determine the type of particle designed.
      */
     private String particleDesign;
+    /**
+     *
+     */
+    private de.slikey.effectlib.EffectManager effectManager;
+    /**
+     *
+     */
+    private final de.slikey.effectlib.EffectLib effectLib = de.slikey.effectlib.EffectLib.instance();
 
     /**
      * Particles Constructor. Initialize private variables.
@@ -35,6 +53,7 @@ public class Particles extends BukkitRunnable {
         this.particle = getParticle();
         this.cancel = isCancelled();
         this.particleDesign = getParticleDesign();
+        this.effectManager = getEffectManager();
     }
 
     /**
@@ -99,6 +118,21 @@ public class Particles extends BukkitRunnable {
             e.printStackTrace();
             setCancel(true);
         }
+    }
+
+    /**
+     *
+     * @return
+     */
+    public EffectManager getEffectManager() {
+        return effectManager;
+    }
+
+    /**
+     *
+     */
+    public void setEffectManager() {
+        this.effectManager = new EffectManager(effectLib);
     }
 
     /**
@@ -167,6 +201,10 @@ public class Particles extends BukkitRunnable {
             case "sphere":
                 spawnSphere();
                 break;
+            case "heart":
+                spawnHeartShape();
+//                new SphereEffect();
+                break;
             case "test":
                 spawnOval(); // TODO
                 break;
@@ -216,6 +254,109 @@ public class Particles extends BukkitRunnable {
         }
     }
 
+    public int particles;
+    public double xRotation;
+    public double yRotation;
+    public double zRotation;
+    public double yFactor;
+    public double xFactor;
+    public double factorInnerSpike;
+    public double compressYFactorTotal;
+    public float compilaction;
+    /**
+     * Spawn star splash particles
+     *
+     * This first for-loop with determine the
+     */
+    private void spawnHeartShape() {
+//        Particle particle = Particle.DOLPHIN; // Particle type spawned
+//        float radius = 2; // Radius of cone
+//        float lengthGrow = .05F; // Growing per iteration (0.05)
+//        double angularVelocity = Math.PI / 16; // Radials per iteration (PI / 16)
+//        int particles = 10; // Cone-particles per iteration (10)
+//        float radiusGrow = .002F; // Growth in blocks per iteration (00.2)
+//        int particlesCone = 200; // Cone size in particles per cone
+//        int step = 0; // Current step. Works as counter
+//        boolean randomize = true; // Randomize every cone on start (true)
+//        double rotation = 0; // Start-angle or rotation of the cone
+//        setEffectManager();
+//        de.slikey.effectlib.effect.SphereEffect sphereEffect = new SphereEffect(getEffectManager());
+
+//        sphereEffect.setEntity(getPlayer());
+//        sphereEffect.iterations = 15 * 20;
+//        sphereEffect.period = 10;
+//        sphereEffect.onRun();
+//        sphereEffect.start();
+/*
+ * Sphere Effect
+ */
+//        this.particle = Particle.DOLPHIN;
+//        double radius = 0.6D;
+//        double yOffset = 0.0D;
+//        int particles = 200;
+//        double radiusIncrease = 0.0D;
+//
+////        if (radiusIncrease != 0.0D) {
+////            radius += radiusIncrease;
+////        }
+//
+//        Location playerLoc = getPlayer().getLocation().add(0.0D, yOffset, 0.0D);
+//
+//        for(int i = 0; i < particles; ++i) {
+//            Vector vector = RandomUtils.getRandomVector().multiply(radius);
+//            playerLoc.add(vector);
+//            player.getWorld().spawnParticle(getParticle(), playerLoc.add(0, 1, 0), 1);
+////            playerLoc.subtract(vector);
+//        }
+
+        /*
+         * heart Effect
+         * TODO: Fix heart not rotating.
+         */
+
+        this.particle = getParticle();
+        this.particles = 50;
+        this.zRotation = 0.0D;
+        this.yFactor = 1.0D;
+        this.xFactor = 1.0D;
+        this.factorInnerSpike = 0.8D;
+        this.compressYFactorTotal = 2.0D;
+        this.compilaction = 2.0F;
+        Location location = getPlayer().getLocation();
+        Vector vector = new Vector();
+
+        for(int i = 0; i < this.particles; ++i) {
+            float alpha = 3.1415927F / this.compilaction / (float)this.particles * (float)i;
+            double phi = Math.pow((double)Math.abs(MathUtils.sin(2.0F * this.compilaction * alpha)) + this.factorInnerSpike * (double)Math.abs(MathUtils.sin(this.compilaction * alpha)), 1.0D / this.compressYFactorTotal);
+            vector.setY(phi * (double)(MathUtils.sin(alpha) + MathUtils.cos(alpha)) * this.yFactor);
+            vector.setZ(phi * (double)(MathUtils.cos(alpha) - MathUtils.sin(alpha)) * this.xFactor);
+            VectorUtils.rotateVector(vector, this.xRotation, this.yRotation, this.zRotation);
+            player.getWorld().spawnParticle(getParticle(), location.add(vector),2);
+            location.subtract(vector);
+        }
+
+        Logger.info("&2onRun &f|&7 The Custom Sphere Method works");
+
+
+
+//        for (double loopOne = 0; loopOne <= Math.PI; loopOne += Math.PI / 2) {
+////            double radius = Math.sin(loopOne);
+//            for (double loopTwo = 0; loopTwo < Math.PI * 2; loopTwo += Math.PI / 4) {
+//                double y = Math.cos(loopTwo);
+//                for (double loopThree = 0; loopThree < Math.PI; loopThree += Math.PI / 8) {
+//                    double x = Math.cos(loopThree) * y;
+//                    for (double loopFour = 0; loopFour < Math.PI * 2; loopFour += Math.PI / 10) {
+//                        double z = Math.sin(loopFour) * radius * y;
+//                        Location playerLoc = player.getLocation().add(x, y + 1, z); // '+1' centers to player & '-2' moves particle forward
+//                        playerLoc.getWorld().spawnParticle(getParticle(), playerLoc, 1);
+//                    }
+//                }
+//            }
+//        }
+    }
+
+
+
     /**
      * TODO
      */
@@ -242,6 +383,7 @@ public class Particles extends BukkitRunnable {
 //            }
 //        }
     }
+
     public void getDesign(Player player, String particleDesign) {
         if (particle.equals(Particle.DOLPHIN) && particleDesign.equalsIgnoreCase("sphere")) { // Sphere
             /*
