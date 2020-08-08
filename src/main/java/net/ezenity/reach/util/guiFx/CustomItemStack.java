@@ -16,7 +16,7 @@ public abstract class CustomItemStack {
      * @param itemString Gets a string. Can use this to get a String from a config file.
      * @return itemstack
      */
-    public abstract ItemStack getItem(String itemString);
+    public abstract ItemStack getConfigItem(String itemString);
 
     /**
      * Sets the item to the given players main hand.
