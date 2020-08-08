@@ -1,83 +1,98 @@
 package net.ezenity.reach.listener;
 
-public class ToolsPortalListener {}
+import net.ezenity.reach.configuration.Config;
+import net.ezenity.reach.util.Logger;
+import net.ezenity.reach.util.guiFx.Portals;
+import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEvent;
 
-//public class ToolsPortalListener implements Listener {
-//    private Main plugin = Main.getInstance();
-//    private String invName = Config.TOOLS_PORTAL_TITLE;
-//    private Player target;
-//
-//    /**
-//     * Initialize the plugin field
-//     *
-//     * @param plugin Get plugin
-//     */
-//    public ToolsPortalListener(Main plugin) {
-//        this.plugin = plugin;
-//    }
-//
-//    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
-//    public void onToolsPortalClick(InventoryClickEvent inventoryClickEvent){
-//        String clickedInvTitle = inventoryClickEvent.getWhoClicked().getOpenInventory().getTitle();
-//
-//        if (!clickedInvTitle.equalsIgnoreCase(invName)){
-//            Logger.debug("onToolsPortalClick | Not tools portal inventory, return.");
-//            return;
-//        }
-//
-//        // Stop all clickable events
-//        inventoryClickEvent.setCancelled(true);
-//        Logger.debug("onToolsPortalClick | All clickable events are canceled for tools portal.");
-//
-//        target = (Player) inventoryClickEvent.getWhoClicked();
-//
-//        // Get clicked item
-//        ItemStack itemClicked = inventoryClickEvent.getCurrentItem();
-//
-//        // Close inventory if ItemStack APPLE is clicked
-//        if (itemClicked.getType().equals(Material.APPLE)){
-//            target.closeInventory();
-//
-//            Logger.debug("onMainPortalClick | Target clicked Apple, closing inventory.");
-//            // TODO: create lang for message
-//            Lang.send(target, "Closing inventory");
-//        }
-//
-//        // Run checks if Tree Spawner tool is selected
-//        if (itemClicked.getType().equals(Material.WOODEN_AXE)){
-//            // Check if the tree Spawner tool is enabled
-//            if (!Config.TREE_SPAWNER_ENABLED){
-//                Logger.debug("onToolsPortalClick | " + target.getDisplayName() + " clicked Tree Spawner tool, however it is disabled. Closing inventory");
-//                target.closeInventory();
-//                // TODO: Create lang for message
-//                Lang.send(target, "Sorry, the Tree Spawner tool is disabled.");
-//                return;
-//            }
-//
-//            // Check if target has permissions
-//            if (!target.hasPermission("command.reach.portal.tools.treeSpawner")){
-//                Logger.debug("onToolsPortalClick | " + target.getDisplayName() + " Does not have permission to use the Tree Spawner Tool. Return");
-//                // TODO Create lang for message
-//                Lang.send(target, "You do not have permission to use the Tree Spawner Tool.");
-//                return;
-//            }
-//
-//            // Check to see if the target main hand is empty
-//            if (!target.getInventory().getItemInMainHand().getType().isEmpty()){
-//                Logger.debug("onToolsPortalClick | " + target.getDisplayName() + " main hand is not empty, cannot place tool in hand. Return.");
-//                // TODO: Create lang for message
-//                Lang.send(target, "Your hand is not empty, tool cannot be placed. Cancelling. Please empty main hand and try again.");
-//                target.closeInventory();
-//                return;
-//            }
-//
-//            // Give player tree spawner tool
-//            // TODO: Create class/method for spawning in tools
-//            target.closeInventory();
-//
-//            // TODO: Create particles effects
-//            // TODO: Create cool down for tool
-//        }
-//
-//    }
-//}
+import java.util.Arrays;
+import java.util.Objects;
+
+import static org.bukkit.Material.*;
+
+/**
+ * TODO Work on validating the Tree Spawner clicked block
+ */
+public class ToolsPortalListener implements Listener {
+
+    /**
+     * Validate block clicked
+     * <p>
+     * Verifies that the Tool is a "Tree Spawner". Once the Tool is verified it will sort through the options
+     * with a new custom inventory for the player to select through.
+     * <p>
+     * Once the player selects the tree they are wanting to spawn the custom inventory will close and spawn it
+     * on the block that the player clicked on. They "Tree Spawner" Tool will also be removed from the players
+     * inventory.
+     * <p>
+     * Once the Tool is removed from the given player, the cool down for that tool will then begin.
+     *
+     * @param event player clicked block
+     */
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onTreeSpawnerToolClick(PlayerInteractEvent event) {
+        if (!Config.TREE_SPAWNER_ENABLED){
+            Logger.info("&bonTreeSpawnerToolClick &f|&7 " + Config.TREE_SPAWNER_TITLE + " is disabled, cancelling event.");
+            return;
+        }
+
+        if (event.getPlayer().getInventory().getItemInMainHand().getType() != Material.valueOf(Config.TREE_SPAWNER_SPAWNED_TYPE)){
+            Logger.info("&bonTreeSpawnerToolClick &f|&7 The item type, " + event.getPlayer().getInventory().getItemInMainHand().getType() + ", does not match config option, cancelling event.");
+            return;
+        }
+
+        if (!event.getPlayer().getInventory().getItemInMainHand().getItemMeta().hasCustomModelData()){
+            Logger.info("&bonTreeSpawnerToolClick &f|&7 Item in hand does not have any custom model data.");
+            return;
+        }
+
+        int itemIdentity = event.getPlayer().getInventory().getItemInMainHand().getItemMeta().getCustomModelData();
+
+        if (itemIdentity != Config.TREE_SPAWNER_SPAWNED_IDENTIFIER) {
+            Logger.info("&bOnTreeSpawnerClick &f|&7 The number identifier does not match the " + Config.TREE_SPAWNER_TITLE + " numeral identifier, cancelling event.");
+            return;
+        }
+
+        // TODO: Check for spawning ability -> Make sure tree can spawn in that specific location
+
+        if (!Objects.requireNonNull(event.getClickedBlock()).getType().isBlock()) {
+            Logger.info("&bonTreeSpawnerToolClick &f|&7 The click event is not a block, cancelling event.");
+            return;
+        }
+
+        Material blockClicked = event.getClickedBlock().getType();
+        boolean matchAnyListedMaterial = Arrays.asList(getMaterial()).contains(blockClicked);
+
+        if (matchAnyListedMaterial) {
+                event.setCancelled(true);
+                Portals.TOOLS_TREE_SPAWNER_INVENTORY.open(event.getPlayer());
+        } else {
+            Logger.error("&bonTreeSpawnerToolClick &f|&7 Click block equals " + blockClicked.toString());
+            Logger.error("&bonTreeSpawnerToolClick &f|&7 Block click does not equal the proper block, cancelling event.");
+        }
+    }
+
+    /**
+     * Get clicked material.
+     * <p>
+     * When a user clicks a material with the Tree Spawner Tool, this method will verify that the correct
+     * block was clicked.
+     *
+     * @return Array of allowed clicked material for Tree Spawner Tool
+     */
+    private Material[] getMaterial(){
+        return new Material[]{
+                DIRT,
+                GRASS_BLOCK,
+                COARSE_DIRT,
+                GRASS_PATH,
+                PODZOL,
+                FARMLAND,
+                END_STONE
+        };
+    }
+}
