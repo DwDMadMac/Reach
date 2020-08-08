@@ -2,6 +2,7 @@ package net.ezenity.reach;
 
 import net.ezenity.reach.command.CmdMainGui;
 import net.ezenity.reach.command.CmdReload;
+import net.ezenity.reach.listener.ToolsPortalListener;
 import net.ezenity.reach.util.Logger;
 import net.ezenity.reach.configuration.Config;
 import net.ezenity.reach.configuration.Lang;
@@ -32,7 +33,7 @@ public class Main extends JavaPlugin {
 
         // Register events
 //        getServer().getPluginManager().registerEvents(new MainPortalListener(this), this);
-//        getServer().getPluginManager().registerEvents(new ToolsPortalListener(this), this);
+        getServer().getPluginManager().registerEvents(new ToolsPortalListener(), this);
 
         // Register commands
         getCommand("reach").setExecutor(new CmdReload(this));
