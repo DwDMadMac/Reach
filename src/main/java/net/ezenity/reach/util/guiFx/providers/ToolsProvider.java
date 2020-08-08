@@ -1,18 +1,22 @@
-package net.ezenity.reach.util.guiFx;
+package net.ezenity.reach.util.guiFx.providers;
 
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
+import net.ezenity.reach.util.guiFx.Portals;
+import net.ezenity.reach.util.guiFx.SpawnedItem;
 import net.ezenity.reach.util.particleFx.ParticleSpawnedTask;
 import net.ezenity.reach.configuration.Config;
 import net.ezenity.reach.configuration.Lang;
 import net.ezenity.reach.util.Logger;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * ToolsProvider
- *
+ * <p>
  * This provider is the class for implementing tools inventory items. Here
  * will also contain information to what will happen next when a user
  * clicks one of the tool items.
@@ -23,7 +27,7 @@ public class ToolsProvider implements InventoryProvider {
     @Override
     public void init(Player player, InventoryContents inventoryContents) {
         // Tree Spawner Tool
-        inventoryContents.set(0,0, ClickableItem.of( spawnedItem.getItem("tools.tree-spawner"), e -> {
+        inventoryContents.set(0,0, ClickableItem.of( spawnedItem.getConfigItem("tools.tree-spawner"), e -> {
             // Check if target has permissions TODO: Create abstract solution
             if (!player.hasPermission("command.reach.portal.tools.treeSpawner")) {
                 Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " Does not have permission to use the Tree Spawner Tool. Return");
@@ -43,13 +47,15 @@ public class ToolsProvider implements InventoryProvider {
                 return;
             }
 
-            ParticleSpawnedTask.setParticleTask(
-                    player,
-                    Particle.DOLPHIN,
-                    Config.TREE_SPAWNER_PARTICLE_DESIGN,
-                    Config.TREE_SPAWNER_COOLDOWN,
-                    Config.TREE_SPAWNER_PARTICLE_SPAWNED_TIMER
-            );
+//              USE THIS FOR FORCE FIELD WEAPON
+//
+//            ParticleSpawnedTask.setParticleTask(
+//                    player,
+//                    Particle.DOLPHIN,
+//                    Config.TREE_SPAWNER_PARTICLE_DESIGN,
+//                    Config.TREE_SPAWNER_COOLDOWN,
+//                    Config.TREE_SPAWNER_PARTICLE_SPAWNED_TIMER
+//            );
 
             // Spawn custom item in players hand
             spawnedItem.setItem(
@@ -58,7 +64,14 @@ public class ToolsProvider implements InventoryProvider {
                     Config.TREE_SPAWNER_SPAWNED_IDENTIFIER
             );
 
+            player.closeInventory();
         } ));
+
+
+        ItemStack test = new ItemStack(Material.ARROW);
+        inventoryContents.add(ClickableItem.of(test, e -> {
+            Portals.TOOLS_INVENTORY.getParent();
+        }));
 
         // TODO: Make Flower Spawner inventory contents
     }
