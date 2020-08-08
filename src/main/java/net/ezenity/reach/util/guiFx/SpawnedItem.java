@@ -23,10 +23,13 @@ public class SpawnedItem extends CreateItem {
     @Override
     public void setItem(Player player, String itemString, int itemIdentifier) {
         this.itemString = itemString;
-        ItemMeta itemMeta = getItem().getItemMeta();
+
+        ItemStack newSetItem = getItem();
+        ItemMeta itemMeta = newSetItem.getItemMeta();
         Objects.requireNonNull(itemMeta).setCustomModelData(itemIdentifier);
-        getItem().setItemMeta(itemMeta);
-        player.getInventory().setItemInMainHand(getItem());
+        newSetItem.setItemMeta(itemMeta);
+
+        player.getInventory().setItemInMainHand(newSetItem);
     }
 
     /**
@@ -35,7 +38,7 @@ public class SpawnedItem extends CreateItem {
      *
      * @return custom item stack
      */
-    private ItemStack getItem() {
-        return getItem(itemString);
+    public ItemStack getItem() {
+        return getConfigItem(itemString);
     }
 }
