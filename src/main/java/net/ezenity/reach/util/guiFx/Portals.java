@@ -1,6 +1,9 @@
 package net.ezenity.reach.util.guiFx;
 
 import fr.minuskube.inv.SmartInventory;
+import net.ezenity.reach.util.guiFx.providers.MainProvider;
+import net.ezenity.reach.util.guiFx.providers.ToolsProvider;
+import net.ezenity.reach.util.guiFx.providers.TreeSpawnerProvider;
 
 public class Portals {
     /**
@@ -30,6 +33,15 @@ public class Portals {
             .provider(new ToolsProvider())
             .size(1,9)
             .title("Tools Portal")
+            .closeable(true)
+            .build();
+
+    public static final SmartInventory TOOLS_TREE_SPAWNER_INVENTORY = SmartInventory.builder()
+            .id("treeSpawnerPortal")
+            .provider(new TreeSpawnerProvider())
+            .parent(TOOLS_INVENTORY)
+            .size(2,9)
+            .title("Tree Spawner Options")
             .closeable(true)
             .build();
 
