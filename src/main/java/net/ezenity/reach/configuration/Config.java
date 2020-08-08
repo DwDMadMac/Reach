@@ -41,6 +41,11 @@ public class Config {
     public static String TREE_SPAWNER_SPAWNED_TYPE;
     public static String TREE_SPAWNER_SPAWNED_TITLE;
     public static String TREE_SPAWNER_SPAWNED_LORE;
+    // -> Tree Spawner Tool Portal
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_LORE;
     // Tools Portal: Flower Spawner
     // TODO: Make Flower Spawner settings
     // TODO: Make forcefield bump players back
@@ -75,10 +80,16 @@ public class Config {
         TREE_SPAWNER_TYPE = config.getString("portal.tools.tree-spawner.type","WOODEN_AXE");
         TREE_SPAWNER_TITLE = config.getString("portal.tools.tree-spawner.title","Tree Spawner");
         TREE_SPAWNER_LORE = config.getString("portal.tools.tree-spawner.lore","&7Spawn a custom tree");
-        TREE_SPAWNER_SPAWNED_IDENTIFIER = config.getInt("portal.tools.tree-spawner.spawned.identifier", 00);
+        TREE_SPAWNER_SPAWNED_IDENTIFIER = config.getInt("portal.tools.tree-spawner.spawned.identifier", 001);
         TREE_SPAWNER_SPAWNED_TYPE = config.getString("portal.tools.tree-spawner.spawned.type","WOODEN_AXE");
         TREE_SPAWNER_SPAWNED_TITLE = config.getString("portal.tools.tree-spawner.spawned.title","&2Tree Spawner");
         TREE_SPAWNER_SPAWNED_LORE = config.getString("portal.tools.tree-spawner.spawned.lore","&7Click location where you would\n&7like to spawn your &6Tree Type&7.");
+        // -> Tree Spawner Tool Portal
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.acacia.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.type", "ACACIA_LOG");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.title", "Acacia");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.lore",
+                "&7Click here to spawn\n&7the Acacia tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
     }
 
     // ############################  DO NOT EDIT BELOW THIS LINE  ############################

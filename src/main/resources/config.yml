@@ -47,9 +47,21 @@ portal:
       lore:
         - "&7Spawn a custom tree."
       spawned:
-        identifier: 00
+        identifier: 001
         type: "WOODEN_AXE"
         title: "&2Tree Spawner"
         lore:
           - "&7Click location where you would"
           - "&7like to spawn your &6Tree Type&7."
+        tool-portal:
+          acacia:
+            cooldown: 60
+            type: "ACACIA_LOG"
+            title: "Acacia"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Acacia tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
