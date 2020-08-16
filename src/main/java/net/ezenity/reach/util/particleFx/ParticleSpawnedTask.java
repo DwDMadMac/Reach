@@ -61,7 +61,8 @@ public class ParticleSpawnedTask {
             particles.setParticle(particle);
             particles.setParticleDesign(particleDesign);
             particles.setPlayer(player);
-            particles.setLocation(location);
+            if (location != null)
+                particles.setLocation(location);
 
             PARTICLE_HANDLER = THREAD_EXECUTOR.scheduleAtFixedRate(particles, 0, 250, TimeUnit.MILLISECONDS);
 
