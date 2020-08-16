@@ -57,6 +57,8 @@ public class ToolsPortalListener implements Listener {
             return;
         }
 
+        event.setCancelled(true); // cancel all click events for tool.
+
         // TODO: Check for spawning ability -> Make sure tree can spawn in that specific location
 
         if (!Objects.requireNonNull(event.getClickedBlock()).getType().isBlock()) {
@@ -68,7 +70,6 @@ public class ToolsPortalListener implements Listener {
         boolean matchAnyListedMaterial = Arrays.asList(getMaterial()).contains(blockClicked);
 
         if (matchAnyListedMaterial) {
-                event.setCancelled(true);
                 Portals.TOOLS_TREE_SPAWNER_INVENTORY.open(event.getPlayer());
         } else {
             Logger.error("&bonTreeSpawnerToolClick &f|&7 Click block equals " + blockClicked.toString());
