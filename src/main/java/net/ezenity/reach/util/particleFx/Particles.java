@@ -1,25 +1,30 @@
 package net.ezenity.reach.util.particleFx;
 
 import de.slikey.effectlib.EffectManager;
-//import de.slikey.effectlib.effect.SphereEffect;
-import de.slikey.effectlib.util.MathUtils;
-import de.slikey.effectlib.util.VectorUtils;
+import de.slikey.effectlib.EffectType;
+import de.slikey.effectlib.effect.CircleEffect;
+import de.slikey.effectlib.effect.ExplodeEffect;
 import net.ezenity.reach.Main;
 import net.ezenity.reach.util.Logger;
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
+import org.bukkit.Sound;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 
 /**
  * This class is a method for implementing particles using a {@link BukkitRunnable} solution.
  */
 public class Particles extends BukkitRunnable {
     /**
-     *
+     * Initialize plugin instance. We use this to initialize an {@link EffectManager} on
+     * the fly with each particle effect. This allow a more dynamic approach, rather than
+     * creating an effect manager on plugin load. Since effects are going to run purely
+     * on a per usage approach, this is more ideal.
      */
-    private Main plugin = Main.getInstance();
+    private final Main plugin = Main.getInstance();
     /**
      * Player. Used to get player UUID.
      */
@@ -37,13 +42,9 @@ public class Particles extends BukkitRunnable {
      */
     private String particleDesign;
     /**
-     *
+     * Particle Location. This will set the location for the given particle that is going to be spawned.
      */
-    private de.slikey.effectlib.EffectManager effectManager;
-    /**
-     *
-     */
-    private final de.slikey.effectlib.EffectLib effectLib = de.slikey.effectlib.EffectLib.instance();
+    private Location location;
 
     /**
      * Particles Constructor. Initialize private variables.
@@ -53,7 +54,8 @@ public class Particles extends BukkitRunnable {
         this.particle = getParticle();
         this.cancel = isCancelled();
         this.particleDesign = getParticleDesign();
-        this.effectManager = getEffectManager();
+        this.location = getLocation();
+        getEffectManager();
     }
 
     /**
@@ -121,18 +123,12 @@ public class Particles extends BukkitRunnable {
     }
 
     /**
+     * Initialize an {@link EffectManager} to the 'Reach' plugin.
      *
-     * @return
+     * @return plugin effect manager
      */
     public EffectManager getEffectManager() {
-        return effectManager;
-    }
-
-    /**
-     *
-     */
-    public void setEffectManager() {
-        this.effectManager = new EffectManager(effectLib);
+        return new EffectManager(plugin);
     }
 
     /**
@@ -152,6 +148,28 @@ public class Particles extends BukkitRunnable {
      */
     public void setCancel(boolean cancel) {
         this.cancel = cancel;
+    }
+
+    /**
+     * Get the location of the spawned particle.
+     *
+     * @return spawned particle location
+     */
+    public Location getLocation() {
+        return location;
+    }
+
+    /**
+     * Set the location for the spawning particle. This is mainly used for setting a particle
+     * to anything other than an entity. If wanting to spawn a particle to an entity, I
+     * suggest using {@link #getPlayer()} method while using the
+     * {@link de.slikey.effectlib.Effect#setEntity(Entity)} method. You can see and example
+     * inside the {@link #doubleSphere()} method.
+     *
+     * @param location set particle to location.
+     */
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     /**
@@ -198,12 +216,14 @@ public class Particles extends BukkitRunnable {
         }
 
         switch (getParticleDesign()) {
-            case "sphere":
-                spawnSphere();
+            case "basicSphere":
+                basicSphere();
                 break;
-            case "heart":
-                spawnHeartShape();
-//                new SphereEffect();
+            case "doubleSphere":
+                doubleSphere();
+                break;
+            case "explode":
+                explodeEffect();
                 break;
             case "test":
                 spawnOval(); // TODO
@@ -241,7 +261,7 @@ public class Particles extends BukkitRunnable {
      * around the player is solid. Increasing this number may also
      * create lag for the players around the spawned particle.
      */
-    private void spawnSphere() {
+    private void basicSphere() {
         for (double circles = 0; circles <= Math.PI; circles += Math.PI / 5) {
             double radius = Math.sin(circles);
             double y = Math.cos(circles);
@@ -254,105 +274,166 @@ public class Particles extends BukkitRunnable {
         }
     }
 
-    public int particles;
-    public double xRotation;
-    public double yRotation;
-    public double zRotation;
-    public double yFactor;
-    public double xFactor;
-    public double factorInnerSpike;
-    public double compressYFactorTotal;
-    public float compilaction;
     /**
-     * Spawn star splash particles
+     * Spawn double sphere shape particles
      *
-     * This first for-loop with determine the
+     * This will allow you to spawn two circles at the same time. Due to being only able to change the color
+     * of three available particles as of 1.8, this particle design will be limited to the following
+     * particles:
+     * <ul>
+     *     <li>REDSTONE</li>
+     *     <li>SPELL_MOB</li>
+     *     <li>SPELL_MOB_AMBIENT</li>
+     * </ul>
      */
-    private void spawnHeartShape() {
-//        Particle particle = Particle.DOLPHIN; // Particle type spawned
-//        float radius = 2; // Radius of cone
-//        float lengthGrow = .05F; // Growing per iteration (0.05)
-//        double angularVelocity = Math.PI / 16; // Radials per iteration (PI / 16)
-//        int particles = 10; // Cone-particles per iteration (10)
-//        float radiusGrow = .002F; // Growth in blocks per iteration (00.2)
-//        int particlesCone = 200; // Cone size in particles per cone
-//        int step = 0; // Current step. Works as counter
-//        boolean randomize = true; // Randomize every cone on start (true)
-//        double rotation = 0; // Start-angle or rotation of the cone
-//        setEffectManager();
-//        de.slikey.effectlib.effect.SphereEffect sphereEffect = new SphereEffect(getEffectManager());
-
-//        sphereEffect.setEntity(getPlayer());
-//        sphereEffect.iterations = 15 * 20;
-//        sphereEffect.period = 10;
-//        sphereEffect.onRun();
-//        sphereEffect.start();
-/*
- * Sphere Effect
- */
-//        this.particle = Particle.DOLPHIN;
-//        double radius = 0.6D;
-//        double yOffset = 0.0D;
-//        int particles = 200;
-//        double radiusIncrease = 0.0D;
-//
-////        if (radiusIncrease != 0.0D) {
-////            radius += radiusIncrease;
-////        }
-//
-//        Location playerLoc = getPlayer().getLocation().add(0.0D, yOffset, 0.0D);
-//
-//        for(int i = 0; i < particles; ++i) {
-//            Vector vector = RandomUtils.getRandomVector().multiply(radius);
-//            playerLoc.add(vector);
-//            player.getWorld().spawnParticle(getParticle(), playerLoc.add(0, 1, 0), 1);
-////            playerLoc.subtract(vector);
-//        }
-
-        /*
-         * heart Effect
-         * TODO: Fix heart not rotating.
-         */
-
-        this.particle = getParticle();
-        this.particles = 50;
-        this.zRotation = 0.0D;
-        this.yFactor = 1.0D;
-        this.xFactor = 1.0D;
-        this.factorInnerSpike = 0.8D;
-        this.compressYFactorTotal = 2.0D;
-        this.compilaction = 2.0F;
-        Location location = getPlayer().getLocation();
-        Vector vector = new Vector();
-
-        for(int i = 0; i < this.particles; ++i) {
-            float alpha = 3.1415927F / this.compilaction / (float)this.particles * (float)i;
-            double phi = Math.pow((double)Math.abs(MathUtils.sin(2.0F * this.compilaction * alpha)) + this.factorInnerSpike * (double)Math.abs(MathUtils.sin(this.compilaction * alpha)), 1.0D / this.compressYFactorTotal);
-            vector.setY(phi * (double)(MathUtils.sin(alpha) + MathUtils.cos(alpha)) * this.yFactor);
-            vector.setZ(phi * (double)(MathUtils.cos(alpha) - MathUtils.sin(alpha)) * this.xFactor);
-            VectorUtils.rotateVector(vector, this.xRotation, this.yRotation, this.zRotation);
-            player.getWorld().spawnParticle(getParticle(), location.add(vector),2);
-            location.subtract(vector);
+    public void doubleSphere() {
+        if (
+            !getParticle().equals(Particle.REDSTONE) &&
+            !getParticle().equals(Particle.SPELL_MOB) &&
+            !getParticle().equals(Particle.SPELL_MOB_AMBIENT)
+        ) {
+            Logger.error("doubleSphere &f|&4 " + getPlayer().getDisplayName() + "&7 activated &6'&fdoubleSphere&6'&7 method.");
+            Logger.error("doubleSphere &f|&4 " + getParticle().toString() + " &7is not one of the qualifying particles. " +
+                    "&7Please user one of the following particles: &6REDSTONE&7, &6SPELL_MOB&7, &6SPELL_MOB_AMBIENT&7.");
+            return;
+        } else {
+            Logger.info("doubleSphere &f|&7 The following particle: &6" + getParticle().toString() + " &7is allowed, continue.");
         }
+        final CircleEffect CIRCLE_A = new CircleEffect(getEffectManager());
+        final CircleEffect CIRCLE_B = new CircleEffect(getEffectManager());
+        /*
+         * This will set the particle for each circle.
+         */
+        CIRCLE_A.particle = getParticle();
+        CIRCLE_B.particle = getParticle();
+        /*
+         * INSTANT: Makes a circle ring
+         * REPEATING: Makes a full circle
+         */
+        CIRCLE_A.type = EffectType.REPEATING;
+        CIRCLE_B.type = EffectType.REPEATING;
+        /*
+         * The circle radius start to lag after 3.0F
+         */
+        CIRCLE_A.radius = 1.8F;
+        CIRCLE_B.radius = 1.8F;
+        /*
+         * Determine the amount of particles that will spawn within
+         * the circle.
+         */
+        CIRCLE_A.particles = 2;
+        CIRCLE_B.particles = 2;
+        /*
+         * Makes circle complete. 'False' will give a ring circle
+         * and depending on the 'zRotation' setting will determine
+         * the location of the ring circles.
+         *
+         * Making this setting hardcoded so that it may not be
+         * altered.
+         */
+        CIRCLE_A.wholeCircle = true;
+        CIRCLE_B.wholeCircle = true;
+        /*
+         * This ensures that the circle is created. Without the
+         * rotation enabled the circle does not fill, regardless
+         * of the 'wholeCircle' settings.
+         *
+         * Making this setting hardcoded so that it may not be
+         * altered.
+         */
+        CIRCLE_A.enableRotation = true;
+        CIRCLE_B.enableRotation = true;
+        /*
+         * I am not sure what this does, nothing different happens when I try
+         * different values.
+         */
+        CIRCLE_A.iterations = 50;
+        CIRCLE_B.iterations = 50;
+        /*
+         * This is to be worked with EffectType.REPEATING.
+         * This will slow down the completion of the circle.
+         * DEFAULT: 2
+         */
+        CIRCLE_A.period = 2;
+        CIRCLE_B.period = 2;
+        /*
+         * Change the color of the particle
+         */
+        CIRCLE_A.color = Color.GREEN;
+        CIRCLE_B.color = Color.BLUE;
+        /*
+         * Ensures that the circles do not cross each other
+         */
+        CIRCLE_A.zRotation = 1.5D;
+        CIRCLE_B.zRotation = 0.0D;
+        /*
+         * TODO: Make config so that this effect can be applied to other objects
+         *
+         * Apply the circle to an entity. Do not use Dynamic Location; causes player
+         * to lag and makes everything really sluggish.
+         */
+        if (getLocation() == null) {
+            CIRCLE_A.setEntity(getPlayer());
+            CIRCLE_B.setEntity(getPlayer());
+        } else {
+            CIRCLE_A.setLocation(getLocation());
+            CIRCLE_B.setLocation(getLocation());
+        }
+        /*
+         * Start both of the effects
+         */
+        CIRCLE_A.start();
+        CIRCLE_B.start();
+    }
 
-        Logger.info("&2onRun &f|&7 The Custom Sphere Method works");
 
 
-
-//        for (double loopOne = 0; loopOne <= Math.PI; loopOne += Math.PI / 2) {
-////            double radius = Math.sin(loopOne);
-//            for (double loopTwo = 0; loopTwo < Math.PI * 2; loopTwo += Math.PI / 4) {
-//                double y = Math.cos(loopTwo);
-//                for (double loopThree = 0; loopThree < Math.PI; loopThree += Math.PI / 8) {
-//                    double x = Math.cos(loopThree) * y;
-//                    for (double loopFour = 0; loopFour < Math.PI * 2; loopFour += Math.PI / 10) {
-//                        double z = Math.sin(loopFour) * radius * y;
-//                        Location playerLoc = player.getLocation().add(x, y + 1, z); // '+1' centers to player & '-2' moves particle forward
-//                        playerLoc.getWorld().spawnParticle(getParticle(), playerLoc, 1);
-//                    }
-//                }
-//            }
-//        }
+    /**
+     * Spawn explosion particles
+     */
+    private void explodeEffect() {
+        ExplodeEffect EXPLODE = new ExplodeEffect(getEffectManager());
+        /*
+         * Can have the option in spawning to different particles. Both particles
+         * spawn at the same location and at the same time.
+         *
+         * TODO: Experiment with color particles to see if we can get some cool results.
+         */
+        EXPLODE.particle1 = getParticle();
+        EXPLODE.particle2 = getParticle();
+        /*
+         * Amount of exploding particles to display in total
+         */
+        EXPLODE.amount = 10;
+        /*
+         * The explosion sound explodes 5 times. Use that as a reference for potentially
+         * other sounds with out experiments.
+         */
+        EXPLODE.sound = Sound.ENTITY_GENERIC_EXPLODE;
+        /*
+         * Leave as is, we want the explosion to be right away.
+         */
+        EXPLODE.type = EffectType.INSTANT;
+        /*
+         * Default: 0.5F
+         *
+         * How fast to output the particles. Cannot use this with the particles we can color.
+         * Since it is deprecated, not sure how much longer this will be available for.
+         */
+        EXPLODE.speed = 0.2F;
+        /*
+         * If the location is not set then it will fall back to spawning the particle on the
+         * players center location.
+         */
+        if (getLocation() == null) {
+            EXPLODE.setEntity(getPlayer());
+        } else {
+            EXPLODE.setLocation(getLocation());
+        }
+        /*
+         * Start the particle effect.
+         */
+        EXPLODE.start();
     }
 
 
