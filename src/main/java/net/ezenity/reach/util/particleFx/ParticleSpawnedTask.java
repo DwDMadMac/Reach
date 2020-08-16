@@ -2,6 +2,7 @@ package net.ezenity.reach.util.particleFx;
 
 import net.ezenity.reach.configuration.Lang;
 import net.ezenity.reach.util.Logger;
+import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
@@ -47,11 +48,12 @@ public class ParticleSpawnedTask {
      *
      * @param player get player
      * @param particle get particle
+     * @param location get particle location
      * @param particleDesign get particle design
      * @param cooldown get cooldown in seconds
      * @param particleSpawnedTimer get particle spawn rate in seconds
      */
-    public static void setParticleTask(Player player, Particle particle, String particleDesign, int cooldown, int particleSpawnedTimer) { // TODO: Rework particle param
+    public static void setParticleTask(Player player, Particle particle, Location location, String particleDesign, int cooldown, int particleSpawnedTimer) { // TODO: Rework particle param
         if (!(System.currentTimeMillis() > getCountdown(player.getUniqueId(), particleDesign))) {
             Logger.info("Count Time  " + getCountdown(player.getUniqueId(), particleDesign));
             Logger.info("System Time " + System.currentTimeMillis());
@@ -59,6 +61,7 @@ public class ParticleSpawnedTask {
             particles.setParticle(particle);
             particles.setParticleDesign(particleDesign);
             particles.setPlayer(player);
+            particles.setLocation(location);
 
             PARTICLE_HANDLER = THREAD_EXECUTOR.scheduleAtFixedRate(particles, 0, 250, TimeUnit.MILLISECONDS);
 
