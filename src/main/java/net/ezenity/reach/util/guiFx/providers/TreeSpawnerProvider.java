@@ -4,6 +4,7 @@ import com.destroystokyo.paper.block.TargetBlockInfo;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
+import net.ezenity.reach.util.Logger;
 import net.ezenity.reach.util.guiFx.SpawnedItem;
 import net.ezenity.reach.util.particleFx.ParticleSpawnedTask;
 import org.bukkit.Location;
@@ -30,20 +31,22 @@ public class TreeSpawnerProvider implements InventoryProvider {
             TargetBlockInfo blockInfo = player.getTargetBlockInfo(10); // Paper-API
             Location relativeBlock = Objects.requireNonNull(blockInfo).getRelativeBlock().getLocation(); // Paper-API
             player.getWorld().generateTree(relativeBlock, TreeType.ACACIA);
-
             player.closeInventory();
-//            player.getInventory().getItemInMainHand().setAmount(0);
 
+            // TODO: Make config options
             ParticleSpawnedTask.setParticleTask(
                     player,
-//                    Particle.FLASH,
-                    Particle.FLAME,
-                    "heart",
+                    Particle.EXPLOSION_HUGE,
+                    relativeBlock,
+                    "explode",
                     1,
-                    5
+                    1
             );
 
-            // TODO: Apply spawning particle effects
+            Logger.debug("Item in " + player.getDisplayName() + "'s hand is a: " + player.getInventory().getItemInMainHand().getType().toString());
+            // TODO: Make option for timed usage, instead of one time usage.
+            player.getInventory().getItemInMainHand().setAmount(0);
+
         }));
     }
 
