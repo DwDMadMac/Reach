@@ -35,7 +35,14 @@ public class Portals {
             .title("Tools Portal")
             .closeable(true)
             .build();
-
+    /**
+     * Tree Spawner Options Portal
+     *
+     * This inventory will be the foundation of all the tree spawner options. Displaying a list of
+     * all available tree types that a user may spawn. By selecting one of the available inventory
+     * contents, this selected inventory content will then spawn where that user has clicked with
+     * the Tree Spawner Tool.
+     */
     public static final SmartInventory TOOLS_TREE_SPAWNER_INVENTORY = SmartInventory.builder()
             .id("treeSpawnerPortal")
             .provider(new TreeSpawnerProvider())
