@@ -40,11 +40,14 @@ public class ParticleSpawnedTask {
 
     /**
      * We will use this method to set our given particle to the plausible demand. The particle will be set using an
-     * executor asynchronously and will run until the particle spawn rate has ended. Once the timer hits it limit the
+     * executor asynchronously and will run until the particle spawn rate has ended. Once the timer hits its limit the
      * executor will then cancel and shutdown. Before spawning the particle, this method will check against a hashmap
      * to ensure that the currently given hash code is not running. If there is still a particle in progress or if
-     * there is a cooldown(countdown) the task will not spawn and if {@link Logger#info(String)} is enabled, will output the
+     * there is a cooldown(countdown), the task will not spawn and if {@link Logger#info(String)} is enabled, will output the
      * remaining time length of the countdown.
+     * <p>
+     * Setting Location. If you are wanting to set the particle to a players location, set the location param to 'null'. This
+     * will automatically set the particles location to the players center.
      *
      * @param player get player
      * @param particle get particle
@@ -61,8 +64,7 @@ public class ParticleSpawnedTask {
             particles.setParticle(particle);
             particles.setParticleDesign(particleDesign);
             particles.setPlayer(player);
-            if (location != null)
-                particles.setLocation(location);
+            particles.setLocation(location);
 
             PARTICLE_HANDLER = THREAD_EXECUTOR.scheduleAtFixedRate(particles, 0, 250, TimeUnit.MILLISECONDS);
 

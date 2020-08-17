@@ -41,14 +41,74 @@ public class Config {
     public static String TREE_SPAWNER_SPAWNED_TYPE;
     public static String TREE_SPAWNER_SPAWNED_TITLE;
     public static String TREE_SPAWNER_SPAWNED_LORE;
-    // -> Tree Spawner Tool Portal
+    ////  Tree Spawner Tool Portal  ////
+    //// -> Acacia
     public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_COOLDOWN;
     public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_TYPE;
     public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_TITLE;
     public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_LORE;
-    // Tools Portal: Flower Spawner
+    //// -> Birch
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_LORE;
+    //// -> Tall Birch
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_TALL_BIRCH_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_TALL_BIRCH_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_TALL_BIRCH_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_TALL_BIRCH_LORE;
+    //// -> Spruce
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_LORE;
+    //// -> Jungle Bush
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_LORE;
+    //// -> Small Jungle
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_LORE;
+    //// -> Jungle
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_LORE;
+    //// -> Oak
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_LORE;
+    //// -> Big Oak
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_LORE;
+    //// -> Dark Oak
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_LORE;
+    //// -> Cocoa
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_LORE;
+    //// -> Swamp
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_LORE;
+    //// -> Chorus Plant
+    public static int TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_COOLDOWN;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_TYPE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_TITLE;
+    public static String TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_LORE;
     // TODO: Make Flower Spawner settings
-    // TODO: Make forcefield bump players back
+    // TODO: Make Force Field bump players back
 
     /**
      * Apply configuration options
@@ -84,12 +144,85 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TYPE = config.getString("portal.tools.tree-spawner.spawned.type","WOODEN_AXE");
         TREE_SPAWNER_SPAWNED_TITLE = config.getString("portal.tools.tree-spawner.spawned.title","&2Tree Spawner");
         TREE_SPAWNER_SPAWNED_LORE = config.getString("portal.tools.tree-spawner.spawned.lore","&7Click location where you would\n&7like to spawn your &6Tree Type&7.");
-        // -> Tree Spawner Tool Portal
+        ////  Tree Spawner Tool Portal  ////
+        //// -> Acacia
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.acacia.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.type", "ACACIA_LOG");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.title", "Acacia");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.lore",
                 "&7Click here to spawn\n&7the Acacia tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Birch
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.birch.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.birch.type", "BIRCH_LEAVES");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.birch.title", "Birch");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.birch.lore",
+                "&7Click here to spawn\n&7the Birch tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Tall Birch
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_TALL_BIRCH_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.tall-birch.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_TALL_BIRCH_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.tall-birch.type", "BIRCH_LOG");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_TALL_BIRCH_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.tall-birch.title", "Tall Birch");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_TALL_BIRCH_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.tall-birch.lore",
+                "&7Click here to spawn\n&7the Tall Birch tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Spruce
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.spruce.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.spruce.type", "SPRUCE_LOG");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.spruce.title", "Spruce");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.spruce.lore",
+                "&7Click here to spawn\n&7the Spruce tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Jungle Bush
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.type", "JUNGLE_LEAVES");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.title", "Jungle Bush");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.lore",
+                "&7Click here to spawn\n&7the Jungle Bush tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Small Jungle
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.type", "STRIPPED_JUNGLE_LOG");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.title", "Small Jungle");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.lore",
+                "&7Click here to spawn\n&7the Small Jungle tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Jungle
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.jungle.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle.type", "JUNGLE_LOG");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle.title", "Jungle");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle.lore",
+                "&7Click here to spawn\n&7the Jungle tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Oak
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.oak.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.oak.type", "OAK_LOG");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.oak.title", "Oak");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.oak.lore",
+                "&7Click here to spawn\n&7the Oak tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Big Oak
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.big-oak.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.big-oak.type", "STRIPPED_OAK_LOG");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.big-oak.title", "Big Oak");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.big-oak.lore",
+                "&7Click here to spawn\n&7the Big Oak tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Dark Oak
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.type", "DARK_OAK_LOG");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.title", "Dark Oak");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.lore",
+                "&7Click here to spawn\n&7the Dark Oak tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Cocoa
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.cocoa.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.cocoa.type", "COCOA_BEANS ");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.cocoa.title", "Cocoa");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.cocoa.lore",
+                "&7Click here to spawn\n&7the Cocoa tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Swamp
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.swamp.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.swamp.type", "VINE");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.swamp.title", "Swamp");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.swamp.lore",
+                "&7Click here to spawn\n&7the Swamp tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
+        //// -> Chorus Plant
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.cooldown", 60);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.type", "CHORUS_PLANT");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.title", "Chorus Plant");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.lore",
+                "&7Click here to spawn\n&7the Chorus Plant tree type.\n\n&7After the tree gas\n&7spawned, the tool will\n&7be removed from your spawn.");
     }
 
     // ############################  DO NOT EDIT BELOW THIS LINE  ############################

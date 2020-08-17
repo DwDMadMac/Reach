@@ -65,3 +65,135 @@ portal:
               - "&7After the tree has"
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
+          birch:
+            cooldown: 60
+            type: "BIRCH_LEAVES"
+            title: "Birch"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Birch tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          tall-birch:
+            cooldown: 60
+            type: "BIRCH_LOG"
+            title: "Tall Birch"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Tall Birch tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          spruce:
+            cooldown: 60
+            type: "SPRUCE_LOG"
+            title: "Spruce"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Spruce tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          jungle-bush:
+            cooldown: 60
+            type: "JUNGLE_LEAVES"
+            title: "Jungle Bush"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Jungle Bush tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          small-jungle:
+            cooldown: 60
+            type: "STRIPPED_JUNGLE_LOG"
+            title: "Small Jungle"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Small Jungle tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          jungle:
+            cooldown: 60
+            type: "JUNGLE_LOG"
+            title: "Jungle"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Jungle tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          oak:
+            cooldown: 60
+            type: "OAK_LOG"
+            title: "Oak"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Oak tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          big-oak:
+            cooldown: 60
+            type: "STRIPPED_OAK_LOG"
+            title: "Big Oak"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Big Oak tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          dark-oak:
+            cooldown: 60
+            type: "DARK_OAK_LOG"
+            title: "Dark Oak"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Dark Oak tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          cocoa:
+            cooldown: 60
+            type: "COCOA_BEANS"
+            title: "Cocoa"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Cocoa tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          swamp:
+            cooldown: 60
+            type: "VINE"
+            title: "Swamp"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Swamp tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
+          chorus-plant:
+            cooldown: 60
+            type: "CHORUS_PLANT"
+            title: "Chorus Plant"
+            lore:
+              - "&7Click here to spawn"
+              - "&7the Chorus Plant tree type."
+              - ""
+              - "&7After the tree has"
+              - "&7spawned, the tool will "
+              - "&7be removed from your inventory."
