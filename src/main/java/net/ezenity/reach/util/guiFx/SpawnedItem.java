@@ -9,8 +9,14 @@ import java.util.Objects;
 /**
  * This class will be a source for getting the given item located in the config file as well
  * as setting an item to a players main hand.
+ *
+ * @author anthonymmacallister
+ * @version 1.0.0
  */
 public class SpawnedItem extends CreateItem {
+    /**
+     * Item String. This is used to get the name of the item from the config file.
+     */
     private String itemString;
 
     /**
@@ -39,6 +45,6 @@ public class SpawnedItem extends CreateItem {
      * @return custom item stack
      */
     public ItemStack getItem() {
-        return getConfigItem(itemString);
+        return createItemStack(itemString);
     }
 }
