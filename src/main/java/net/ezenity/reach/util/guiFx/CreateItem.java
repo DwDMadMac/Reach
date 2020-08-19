@@ -1,6 +1,5 @@
 package net.ezenity.reach.util.guiFx;
 
-import fr.minuskube.inv.content.InventoryContents;
 import net.ezenity.reach.configuration.Config;
 import net.ezenity.reach.Main;
 import net.ezenity.reach.configuration.Lang;
@@ -9,7 +8,6 @@ import net.ezenity.reach.util.guiFx.providers.ToolsProvider;
 import net.ezenity.reach.util.guiFx.providers.TreeSpawnerProvider;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,9 +15,18 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.*;
 
 /**
- * An abstract class for getting an item using configuration settings.
+ * An abstract class for creating an item. This abstract class will gather information
+ * from the configuration file and input the in its appropriate places to create the
+ * desired outcome.
+ *
+ * @author anthonymmacallister
+ * @version 1.0.0
  */
 public abstract class CreateItem extends CustomItemStack {
+    /**
+     * Initialize a plugin instance. This is used for gather plugin configuration settings so that we may
+     * generate a custom item.
+     */
     private final Main plugin = Main.getInstance();
 
     /**
@@ -38,19 +45,12 @@ public abstract class CreateItem extends CustomItemStack {
      * @return custom tool with prerequisites from the config file
      */
     @Override
-    public ItemStack getConfigItem(String configItemLocation) {
+    public ItemStack createItemStack(String configItemLocation) {
         String itemType = (String) plugin.getConfig().get("portal." + configItemLocation + ".type");
         ItemStack itemStack = new ItemStack(Objects.requireNonNull(Material.getMaterial(Objects.requireNonNull(itemType))));
         ItemMeta itemMeta = itemStack.getItemMeta();
         Objects.requireNonNull(itemMeta).setDisplayName(Lang.colorize(plugin.getConfig().getString("portal." + configItemLocation + ".title")));
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-//        itemMeta.setCustomModelData();
-//        if (this.enchantment != null)
-//            itemMeta.addEnchant(enchantment, enchantLevel, levelRestrict); // TODO: Make method for multiple enchantment usages
-//        if (this.itemFlag != null)
-//            itemMeta.addItemFlags(itemFlag);// TODO: Make method to loop through for multiple Item Flag additions
-//        if (this.)
-//            itemMeta.addAttributeModifier(Attribute.GENERIC_ARMOR, ); // TODO: Make method for a system of player buffs & debuffs (check Wiki)
         List<String> itemLore = new ArrayList<>();
         for (String newLines : plugin.getConfig().getStringList("portal." + configItemLocation + ".lore")) {
             itemLore.add(ChatColor.translateAlternateColorCodes('&', newLines));
@@ -59,5 +59,32 @@ public abstract class CreateItem extends CustomItemStack {
         itemStack.setItemMeta(itemMeta);
 
         return itemStack;
+    }
+
+    /**
+     * Get a boolean value from the configuration file and set a string value based
+     * on boolean value. Once the boolean value is obtained the string value will
+     * be set via parameter values 'trueString', 'falseString'.
+     *
+     * @param configItemLocation Gets a string. can be used to get a boolean value from a config file.
+     * @param trueString Gets the string value for a boolean value if true
+     * @param falseString  Gets the string value for a boolean value if false
+     * @return string value based on the boolean value
+     */
+    @Override
+    public String setConfigString(boolean configItemLocation, String trueString, String falseString) {
+        boolean itemStatus = plugin.getConfig().getBoolean(String.valueOf(configItemLocation));
+        return itemStatus ? trueString : falseString;
+    }
+
+    /**
+     * This method will get the boolean value from the given configuration file.
+     *
+     * @param configItemLocation get the boolean from a config file.
+     * @return boolean value from config file.
+     */
+    @Override
+    public boolean getConfigBoolean(boolean configItemLocation) {
+        return plugin.getConfig().getBoolean(String.valueOf(configItemLocation));
     }
 }
