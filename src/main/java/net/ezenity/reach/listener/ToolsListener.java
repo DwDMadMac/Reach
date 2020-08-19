@@ -15,9 +15,11 @@ import java.util.Objects;
 import static org.bukkit.Material.*;
 
 /**
- * TODO Work on validating the Tree Spawner clicked block
+ * Tools Portal Event Listener Class. Here we will listen to all events that are associated with the
+ * tools portal. If the Smart inventory is not able to handle a specific event, we will then fall
+ * back to this class for events.
  */
-public class ToolsPortalListener implements Listener {
+public class ToolsListener implements Listener {
 
     /**
      * Validate block clicked
