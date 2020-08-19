@@ -55,7 +55,13 @@ portal:
           - "&7like to spawn your &6Tree Type&7."
         tool-portal:
           acacia:
+            enabled: true
+            slot-row: 0
+            slot-column: 0
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "ACACIA_LOG"
             title: "Acacia"
             lore:
@@ -66,7 +72,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           birch:
+            enabled: true
+            slot-row: 0
+            slot-column: 1
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "BIRCH_LEAVES"
             title: "Birch"
             lore:
@@ -77,7 +89,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           tall-birch:
+            enabled: true
+            slot-row: 0
+            slot-column: 2
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "BIRCH_LOG"
             title: "Tall Birch"
             lore:
@@ -88,7 +106,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           spruce:
+            enabled: true
+            slot-row: 0
+            slot-column: 3
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "SPRUCE_LOG"
             title: "Spruce"
             lore:
@@ -99,7 +123,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           jungle-bush:
+            enabled: true
+            slot-row: 0
+            slot-column: 4
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "JUNGLE_LEAVES"
             title: "Jungle Bush"
             lore:
@@ -110,7 +140,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           small-jungle:
+            enabled: true
+            slot-row: 0
+            slot-column: 5
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "STRIPPED_JUNGLE_LOG"
             title: "Small Jungle"
             lore:
@@ -121,7 +157,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           jungle:
+            enabled: true
+            slot-row: 0
+            slot-column: 6
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "JUNGLE_LOG"
             title: "Jungle"
             lore:
@@ -132,7 +174,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           oak:
+            enabled: true
+            slot-row: 0
+            slot-column: 7
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "OAK_LOG"
             title: "Oak"
             lore:
@@ -143,7 +191,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           big-oak:
+            enabled: true
+            slot-row: 0
+            slot-column: 8
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "STRIPPED_OAK_LOG"
             title: "Big Oak"
             lore:
@@ -154,7 +208,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           dark-oak:
+            enabled: true
+            slot-row: 1
+            slot-column: 0
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "DARK_OAK_LOG"
             title: "Dark Oak"
             lore:
@@ -165,7 +225,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           cocoa:
+            enabled: true
+            slot-row: 1
+            slot-column: 1
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "COCOA_BEANS"
             title: "Cocoa"
             lore:
@@ -176,7 +242,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           swamp:
+            enabled: true
+            slot-row: 1
+            slot-column: 2
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "VINE"
             title: "Swamp"
             lore:
@@ -187,7 +259,13 @@ portal:
               - "&7spawned, the tool will "
               - "&7be removed from your inventory."
           chorus-plant:
+            enabled: true
+            slot-row: 1
+            slot-column: 3
             cooldown: 60
+            particle-spawned-timer: 1
+            particle-type: "EXPLOSION_HUGE"
+            particle-design: "explode"
             type: "CHORUS_PLANT"
             title: "Chorus Plant"
             lore:
