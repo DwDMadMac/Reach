@@ -16,6 +16,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 /**
  * This class is a method for implementing particles using a {@link BukkitRunnable} solution.
+ *
+ * @author anthonymmacallister
+ * @version 1.0.0
  */
 public class Particles extends BukkitRunnable {
     /**
@@ -116,7 +119,7 @@ public class Particles extends BukkitRunnable {
         try {
             this.particle = particle;
         } catch (IllegalArgumentException e){
-            Logger.error("onParticles | Particle type invalid. Cancelling Particle task. Printstack below");
+            Logger.error("onParticles | Particle type invalid. Cancelling Particle task. Print Stacktrace below");
             e.printStackTrace();
             setCancel(true);
         }
@@ -224,9 +227,6 @@ public class Particles extends BukkitRunnable {
                 break;
             case "explode":
                 explodeEffect();
-                break;
-            case "test":
-                spawnOval(); // TODO
                 break;
             default:
                 break;
@@ -386,10 +386,12 @@ public class Particles extends BukkitRunnable {
         CIRCLE_B.start();
     }
 
-
-
     /**
      * Spawn explosion particles
+     * <p>
+     * This will create an explosion sound along with two identical explosions to display a more
+     * dramatic effect. If the location is null the effect will be displayed on the given player
+     * and if the location is set then it will be displayed on that set location.
      */
     private void explodeEffect() {
         ExplodeEffect EXPLODE = new ExplodeEffect(getEffectManager());
@@ -434,86 +436,6 @@ public class Particles extends BukkitRunnable {
          * Start the particle effect.
          */
         EXPLODE.start();
-    }
-
-
-
-    /**
-     * TODO
-     */
-    private void spawnOval() {
-        for (double circles = 0; circles <= Math.PI; circles += Math.PI / 10) {
-            double radius = Math.sin(circles);
-            double y = Math.cos(circles);
-            for (double particleAmount = 0; particleAmount < Math.PI * 2; particleAmount += Math.PI / 4) {
-                double x = Math.cos(particleAmount) * radius;
-                double z = Math.sin(particleAmount) * radius;
-                Location playerLoc = player.getLocation().add(x, y, z);
-                player.getWorld().spawnParticle(getParticle(), playerLoc.add(0, 1, 0), 1);
-            }
-        }
-//
-//        for (double polarAngle = 0.0; polarAngle < 360.0; polarAngle = polarAngle + 10.0){
-//            for (double elevationAngle = 0.0; elevationAngle < 180.0; elevationAngle = elevationAngle + 59.0){
-//                double dx = radius * Math.sin(Math.toRadians(elevationAngle)) * Math.cos(Math.toRadians(polarAngle));
-//                double dy = radius * Math.sin(Math.toRadians(elevationAngle)) * Math.sin(Math.toRadians(polarAngle));
-//                double dz = radius * Math.cos(Math.toRadians(elevationAngle));
-////                location = player.getLocation().add(dx,dy,dz);
-////                player.getWorld().spawnParticle(getParticle(), location.add());
-//                player.getWorld().spawnParticle(getParticle(), location, 1, dx, dy, dz);
-//            }
-//        }
-    }
-
-    public void getDesign(Player player, String particleDesign) {
-        if (particle.equals(Particle.DOLPHIN) && particleDesign.equalsIgnoreCase("sphere")) { // Sphere
-            /*
-             * New sphere Design
-             */
-//            coordinates = new double[11 + 10 * 2][];
-//            int arrayLocation = 0;
-//
-//            double y = player.getLocation().getY();
-//            double x = player.getLocation().getX();
-//            double z = player.getLocation().getZ();
-//
-//
-//
-//            for (double coord : coordinates[arrayLocation++]){
-//                coord = new double[] {x, y, z};
-//                Location playerLoc = player.getLocation().add(coord);
-//                player.spawnParticle(getParticle(), player.getLocation(coord));
-//            }
-
-
-            /*
-             * Old sphere design
-             */
-            for (double i = 0; i <= Math.PI; i += Math.PI / 10) { // Last digit being amount of circles
-                double radius = Math.sin(i);
-                double y = Math.cos(i);
-                for (double a = 0; a < Math.PI * 2; a += Math.PI / 60) {
-                    double x = Math.cos(a) * radius;
-                    double z = Math.sin(a) * radius;
-
-//                    player.getWorld().spawnParticle(getParticle(), player.getLocation().clone().add(x,y,z), 1);
-                    Location playerLoc = player.getLocation().add(x, y, z);
-                    player.spawnParticle(getParticle(), playerLoc.add(0, 1, 0), 1);
-                    player.getLocation().subtract(x, y, z);
-                }
-            }
-        } else  if (particle.equals(Particle.PORTAL) && particleDesign.equalsIgnoreCase("treeSpawner")) { // Tree Spawner
-            for (double i = 0; i <= Math.PI; i += Math.PI / 10){
-                double radius = Math.sin(i);
-                double y = Math.cos(i);
-                for (double a = 0; a < Math.PI * 2; a += Math.PI / 4){
-                    double x = Math.cos(a) * radius;
-                    double z = Math.sin(a) * radius;
-                    Location playerLoc = player.getLocation().add(x,y,z);
-                    player.getWorld().spawnParticle(getParticle(), playerLoc.add(0,1,0), 1);
-                }
-            }
-        }
     }
 }
 

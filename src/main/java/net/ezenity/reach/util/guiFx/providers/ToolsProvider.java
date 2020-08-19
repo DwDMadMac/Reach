@@ -3,31 +3,39 @@ package net.ezenity.reach.util.guiFx.providers;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
-import net.ezenity.reach.util.guiFx.Portals;
 import net.ezenity.reach.util.guiFx.SpawnedItem;
-import net.ezenity.reach.util.particleFx.ParticleSpawnedTask;
 import net.ezenity.reach.configuration.Config;
 import net.ezenity.reach.configuration.Lang;
 import net.ezenity.reach.util.Logger;
-import org.bukkit.Material;
-import org.bukkit.Particle;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 /**
- * ToolsProvider
+ * Tools Provider
  * <p>
- * This provider is the class for implementing tools inventory items. Here
+ * This provider is the class for implementing tool inventory items. Here
  * will also contain information to what will happen next when a user
  * clicks one of the tool items.
  */
 public class ToolsProvider implements InventoryProvider {
+    /**
+     * Spawned Item. Generates an ItemStack that is set within the configuration file. This is used
+     * for setting the tools inside the Tools Portal.
+     */
     private final SpawnedItem spawnedItem = new SpawnedItem();
 
+    /**
+     * Tools Portal.
+     * <p>
+     * This is the custom inventory for the Tools Portal. When a user selects a specific tool it will then
+     * be placed in the players hand for further evaluation on the given tools characteristics.
+     *
+     * @param player get the player that is interacting with the custom portal.
+     * @param inventoryContents set the tools inside the Tools Portal.
+     */
     @Override
     public void init(Player player, InventoryContents inventoryContents) {
         // Tree Spawner Tool
-        inventoryContents.set(0,0, ClickableItem.of( spawnedItem.getConfigItem("tools.tree-spawner"), e -> {
+        inventoryContents.set(0,0, ClickableItem.of( spawnedItem.createItemStack("tools.tree-spawner"), e -> {
             // Check if target has permissions TODO: Create abstract solution
             if (!player.hasPermission("command.reach.portal.tools.treeSpawner")) {
                 Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " Does not have permission to use the Tree Spawner Tool. Return");
@@ -68,16 +76,20 @@ public class ToolsProvider implements InventoryProvider {
         } ));
 
 
-        ItemStack test = new ItemStack(Material.ARROW);
-        inventoryContents.add(ClickableItem.of(test, e -> {
-            Portals.TOOLS_INVENTORY.getParent();
-        }));
+//        ItemStack test = new ItemStack(Material.ARROW);
+//        inventoryContents.add(ClickableItem.of(test, e -> {
+//            Portals.TOOLS_INVENTORY.getParent();
+//        }));
 
         // TODO: Make Flower Spawner inventory contents
     }
 
+    /**
+     * Update inventory in iterations. Currently not using with this portal.
+     *
+     * @param player get player
+     * @param inventoryContents get/set inventory contents
+     */
     @Override
-    public void update(Player player, InventoryContents inventoryContents) {
-
-    }
+    public void update(Player player, InventoryContents inventoryContents) {}
 }

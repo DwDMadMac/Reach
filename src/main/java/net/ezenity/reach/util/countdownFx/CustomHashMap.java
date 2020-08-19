@@ -11,6 +11,7 @@ import java.util.function.BiFunction;
  * will remain constant over time. This class also permits null keys and values.
  * <p>
  * @author anthonymmacallister
+ * @version 1.0.0
  *
  * @param <K1> type of keys maintained by the map
  * @param <K2> type of keys maintained by the map

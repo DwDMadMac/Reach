@@ -1,6 +1,7 @@
 package net.ezenity.reach.util.countdownFx;
 
-import net.ezenity.reach.util.countdownFx.CustomIndex;
+import net.ezenity.reach.util.particleFx.ParticleSpawnedTask;
+import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 
@@ -9,16 +10,19 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * A very simple countdown library
- *
+ * A custom countdown library. This library will allow you to apply countdowns using a hashmap
+ * with the help from a {@link CustomIndex} double key algorithm. This will allow you to apply
+ * two keys to the hashmap which one combined the two keys into one hash.
+ * <p>
  * TODO: NEEDED Methods Below
      - public Map<UUID, Long> getAllTimers();
      - public Map<String, Long> getSpecificTimer();
      - public boolean activatedTimers();
      - public void removeTimer();
      - public void removeSpecificTimer();
- *
+ * <p>
  * @author anthonymmacallister
+ * @version 1.0.0
  */
 public class Countdown {
     /**
@@ -73,7 +77,7 @@ public class Countdown {
      * countdown key. If the system time in milliseconds have passed, it will return 0L instead.
      * This method is used to compute for active countdowns. For an example of how to use this
      * method, refer to:
-     * {@link net.ezenity.reach.util.particleFx.ParticleSpawnedTask#setParticleTask(Player, Particle, String, int, int)}
+     * {@link ParticleSpawnedTask#setParticleTask(Player, Particle, Location, String, int, int)}
      *
      * @param playerID get player uuid
      * @param countdownKey get custom countdown key

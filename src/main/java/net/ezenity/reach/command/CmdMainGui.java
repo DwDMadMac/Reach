@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import net.ezenity.reach.Main;
 import net.ezenity.reach.configuration.Lang;
 
 import net.ezenity.reach.util.Logger;
@@ -15,18 +14,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
+/**
+ * Main Reach Portal. This will hold the starting point to child portals.
+ */
 public class CmdMainGui implements TabExecutor {
-    private Main plugin = Main.getInstance();
-    private List<String> portals = Arrays.asList("main", "tools", "weapons");
-
     /**
-     * Initialize reach instance
-     *
-     * @param plugin Get plugin instance
+     * Portals Array List. This list is used for auto tab fill.
      */
-    public CmdMainGui(Main plugin) {
-        this.plugin = plugin;
-    }
+    private final List<String> portals = Arrays.asList("main", "tools", "weapons");
 
     /**
      * Will auto populate the main gui options in the text box to allow the user to tab in the remainder of the option

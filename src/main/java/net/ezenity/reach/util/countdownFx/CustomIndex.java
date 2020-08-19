@@ -8,6 +8,9 @@ import java.util.Objects;
  * type value, representing the returned index. To see how this class
  * can be implemented through usage, please refer to:
  * {@link Countdown}
+ * <p>
+ * @author anthonymmacallister
+ * @version 1.0.0
  */
 public class CustomIndex {
     /**

@@ -5,6 +5,10 @@ import net.ezenity.reach.util.guiFx.providers.MainProvider;
 import net.ezenity.reach.util.guiFx.providers.ToolsProvider;
 import net.ezenity.reach.util.guiFx.providers.TreeSpawnerProvider;
 
+/**
+ * List of Portals. An easy location for creating portals and keeping everything organized.
+ * Each child portal will be listed under its parent portal.
+ */
 public class Portals {
     /**
      * Main Inventory

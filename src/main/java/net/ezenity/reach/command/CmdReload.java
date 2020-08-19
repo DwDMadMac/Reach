@@ -20,7 +20,13 @@ import org.bukkit.command.TabExecutor;
  * </ul>
  */
 public class CmdReload implements TabExecutor {
-    private Main plugin;
+    /**
+     * Initialize the plugin instance.
+     */
+    private final Main plugin;
+    /**
+     * String message. Used for outputting the current state of the reloaded files.
+     */
     private String msg;
 
     /**

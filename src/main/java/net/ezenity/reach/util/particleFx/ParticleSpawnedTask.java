@@ -17,6 +17,9 @@ import static net.ezenity.reach.util.countdownFx.Countdown.*;
  * This class is used for custom particle spawning. Each particle is spawned as a executor which will be used
  * asynchronously and in the event the same particle is being spawned for the given hash code, this particle
  * task will not execute and continue to its pre-requites code.
+ *
+ * @author anthonymmacallister
+ * @version 1.0.0
  */
 public class ParticleSpawnedTask {
     /**
