@@ -233,11 +233,11 @@ public class Config {
         //// -> Acacia
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_ENABLED = config.getBoolean("portal.tools.tree-spawner.spawned.tool-portal.acacia.enabled", true);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_SLOT_ROW = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.acacia.slot-row", 0);
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_SLOT_COLUMN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.acacia.slot-column", 1);
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_SLOT_COLUMN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.acacia.slot-column", 0);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.acacia.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.acacia.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.type", "ACACIA_LOG");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.title", "Acacia");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_ACACIA_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.acacia.lore",
@@ -249,7 +249,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.birch.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.birch.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.birch.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.birch.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.birch.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.birch.type", "BIRCH_LEAVES");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.birch.title", "Birch");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIRCH_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.birch.lore",
@@ -273,7 +273,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.spruce.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.spruce.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.spruce.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.spruce.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.spruce.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.spruce.type", "SPRUCE_LOG");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.spruce.title", "Spruce");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SPRUCE_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.spruce.lore",
@@ -285,7 +285,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.type", "JUNGLE_LEAVES");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.title", "Jungle Bush");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle-bush.lore",
@@ -297,7 +297,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.type", "STRIPPED_JUNGLE_LOG");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.title", "Small Jungle");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.small-jungle.lore",
@@ -309,7 +309,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.jungle.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.jungle.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle.type", "JUNGLE_LOG");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle.title", "Jungle");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.jungle.lore",
@@ -321,7 +321,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.oak.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.oak.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.oak.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.oak.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.oak.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.oak.type", "OAK_LOG");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.oak.title", "Oak");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_OAK_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.oak.lore",
@@ -333,7 +333,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.big-oak.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.big-oak.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.big-oak.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.big-oak.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.big-oak.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.big-oak.type", "STRIPPED_OAK_LOG");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.big-oak.title", "Big Oak");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_BIG_OAK_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.big-oak.lore",
@@ -345,7 +345,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.type", "DARK_OAK_LOG");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.title", "Dark Oak");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_DARK_OAK_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.dark-oak.lore",
@@ -357,7 +357,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.cocoa.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.cocoa.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.cocoa.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.cocoa.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.cocoa.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.cocoa.type", "COCOA_BEANS");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.cocoa.title", "Cocoa");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_COCOA_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.cocoa.lore",
@@ -369,7 +369,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.swamp.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.swamp.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.swamp.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.swamp.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.swamp.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.swamp.type", "VINE");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.swamp.title", "Swamp");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SWAMP_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.swamp.lore",
@@ -381,7 +381,7 @@ public class Config {
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_COOLDOWN = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.cooldown", 60);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_PARTICLE_SPAWNED_TIMER = config.getInt("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.particle-spawned-timer", 1);
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.particle-type", "EXPLOSION_HUGE");
-        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_PARTICLE_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.particle-design", "explode");
+        TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_PARTICLE_DESIGN = config.getString("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.particle-design", "explode");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_TYPE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.type", "CHORUS_PLANT");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_TITLE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.title", "Chorus Plant");
         TREE_SPAWNER_SPAWNED_TOOL_PORTAL_CHORUS_PLANT_LORE = config.getString("portal.tools.tree-spawner.spawned.tool-portal.chorus-plant.lore",

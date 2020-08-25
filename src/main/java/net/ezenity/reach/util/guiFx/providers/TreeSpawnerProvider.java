@@ -92,7 +92,7 @@ public class TreeSpawnerProvider implements InventoryProvider {
         /*
          * Small Jungle Tree Type
          */
-        inventoryContents.set(Config.TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_SLOT_ROW, Config.TREE_SPAWNER_SPAWNED_TOOL_PORTAL_JUNGLE_BUSH_SLOT_COLUMN,
+        inventoryContents.set(Config.TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_SLOT_ROW, Config.TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_SLOT_COLUMN,
                 ClickableItem.of(spawnedItem.createItemStack("tools.tree-spawner.spawned.tool-portal.small-jungle"),
                         e -> spawnTree(player, "small-jungle.enabled", TreeType.SMALL_JUNGLE, Config.TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_PARTICLE_TYPE, relativeBlock, Config.TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_PARTICLE_DESIGN, Config.TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_COOLDOWN, Config.TREE_SPAWNER_SPAWNED_TOOL_PORTAL_SMALL_JUNGLE_PARTICLE_SPAWNED_TIMER))
         );
