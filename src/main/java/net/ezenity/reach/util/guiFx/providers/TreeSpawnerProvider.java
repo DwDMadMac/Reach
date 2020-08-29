@@ -4,6 +4,7 @@ import com.destroystokyo.paper.block.TargetBlockInfo;
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
+import net.ezenity.reach.Main;
 import net.ezenity.reach.configuration.Config;
 import net.ezenity.reach.configuration.Lang;
 import net.ezenity.reach.util.Logger;
@@ -26,6 +27,10 @@ import java.util.Objects;
  * Tree Spawner Tool in main hand.
  */
 public class TreeSpawnerProvider implements InventoryProvider {
+    /**
+     * Plugin instance. Gets the plugin instance and is utilized for getting the config attribute values.
+     */
+    private final Main plugin = Main.getInstance();
     /**
      * Spawned Item. Generates an ItemStack that is set within the configuration files. This is
      * used for setting the Tree Spawner Tool Options inside the Tree Spawner Options Portal.
@@ -187,7 +192,7 @@ public class TreeSpawnerProvider implements InventoryProvider {
      * @param particleSpawnedTimer set how long the particle will be spawned for in seconds
      */
     private void spawnTree(Player player, String status, TreeType treeType, String particle, Location location, String particleDesign, int coolDown, int particleSpawnedTimer) {
-        if (!spawnedItem.getConfigBoolean(Boolean.parseBoolean("portal.tools.tree-spawner.spawned.tool-portal" + status))) {
+        if (!plugin.getConfig().getBoolean("portal.tools.tree-spawner.spawned.tool-portal." + status)) {
             Logger.debug("spawnTree &f|&7 The specified tree type option is disabled.");
             Lang.send(player, "&cThe option &4" + treeType.toString().toLowerCase().replace("_", " ") + " &cis currently disabled, please try another option.");
             player.closeInventory();
