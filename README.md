@@ -19,7 +19,10 @@ Reach uses maven to handle dependencies and building.
 
 ##### :unlock: Requirements
 * Java 8 JDK or newer
+* [Paper](https://papermc.io/downloads)
+  * Use features only available within Papers API.
 * [SmartInvs plugin](https://www.spigotmc.org/resources/smartinvs-advanced-inventory-api.42835/)
+  * API for the custom inventories(GUI) which access all custom items.
 
 # :speech_balloon: Support
 If you need support, please contact me directly. Working on an area where a hub will be feasible.
