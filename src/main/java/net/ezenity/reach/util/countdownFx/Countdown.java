@@ -9,18 +9,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+// * TODO: NEEDED Methods Below
+//         - public Map<UUID, Long> getAllTimers();
+//        - public Map<String, Long> getSpecificTimer();
+//        - public boolean activatedTimers();
+//        - public void removeTimer();
+//        - public void removeSpecificTimer();
+
 /**
  * A custom countdown library. This library will allow you to apply countdowns using a hashmap
  * with the help from a {@link CustomIndex} double key algorithm. This will allow you to apply
  * two keys to the hashmap which one combined the two keys into one hash.
- * <p>
- * TODO: NEEDED Methods Below
-     - public Map<UUID, Long> getAllTimers();
-     - public Map<String, Long> getSpecificTimer();
-     - public boolean activatedTimers();
-     - public void removeTimer();
-     - public void removeSpecificTimer();
- * <p>
+ *
  * @author anthonymmacallister
  * @version 1.0.0
  */

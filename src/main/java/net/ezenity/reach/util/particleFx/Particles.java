@@ -110,7 +110,7 @@ public class Particles extends BukkitRunnable {
     }
 
     /**
-     * This will set the given particle type. If the particle type is invalid, print stacktrace & the particle
+     * This will set the given particle type. If the particle type is invalid, print stacktrace and the particle
      * event will be cancelled.
      *
      * @param particle get particle type
