@@ -72,20 +72,21 @@
                 <!--                <configuration>-->
                 <!--                    <source>8</source>-->
                 <!--                </configuration>-->
-                <version>3.1.1</version>
-                <configuration>
-                    <links>
-                        <link>https://ci.ezenity.com/job/Reach/javadoc/</link>
-                    </links>
-                </configuration>
-<!--                <executions>-->
-<!--                    <execution>-->
+<!--                <version>3.1.1</version>-->
+<!--                <configuration>-->
+<!--                    <links>-->
+<!--                        <link>https://ci.ezenity.com/job/Reach/javadoc/</link>-->
+<!--                    </links>-->
+<!--                </configuration>-->
+                <executions>
+                    <execution>
 <!--                        <id>package</id>-->
-<!--                        <goals>-->
-<!--                            <goal>jar</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <!-- Jar -->
             <plugin>
