@@ -9,7 +9,7 @@ node {
         echo 'Execute maven'
         // Phases: validate compile test-compile test package integration install deploy
         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean install javadoc:javadoc"
-        javadoc javadocDir: 'Reach/javadoc', keepAll: false
+        javadoc javadocDir: 'target/site/apidocs', keepAll: false
     }
 
     stage('Results') {
