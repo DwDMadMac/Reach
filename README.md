@@ -1,5 +1,5 @@
 # Reach
-![version](https://img.shields.io/badge/Version-v2.0.3-brightgreen)
+![version](https://img.shields.io/badge/Version-v2.0.4-brightgreen)
 ![paperMC-version](https://img.shields.io/badge/PaperMC-V1.16.2-blue)
 ![license-mit](https://img.shields.io/badge/License-MIT-purple)
 

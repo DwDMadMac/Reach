@@ -22,11 +22,6 @@ pipeline {
                 sh "mvn clean install"
                 javadoc javadocDir: 'target/apidocs', keepAll: false
             }
-            post {
-                always {
-                   junit 'target/surefire-reports/*.xml'
-                }
-            }
         }
     }
 }
