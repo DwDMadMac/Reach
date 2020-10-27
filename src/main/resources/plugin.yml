@@ -1,6 +1,6 @@
 name: "Reach"
 main: "net.ezenity.reach.Main"
-version: "2.0.0"
+version: "2.0.1"
 description: "Your go to for Tools, Weapons and protections."
 author: "Ezenity"
 api-version: "1.16"
