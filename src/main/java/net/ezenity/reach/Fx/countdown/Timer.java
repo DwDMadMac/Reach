@@ -1,4 +1,4 @@
-package net.ezenity.reach.util.countdownFx;
+package net.ezenity.reach.Fx.countdown;
 
 
 import java.util.Map;
@@ -6,9 +6,10 @@ import java.util.Map;
 /**
  * Timer interface. This will allows us to create custom countdowns, timers, cooldowns or
  * anything that is requiring some type of double key comparison with one value.
- * <p>
- * @author anthonymmacallister
+ *
+ * @author Ezenity
  * @version 1.0.0
+ * @since 1.0.0
  */
 public interface Timer<K1, K2, V> {
     /**

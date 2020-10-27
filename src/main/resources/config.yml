@@ -11,7 +11,7 @@ logging:
   error: true
 
 # Language file (for translations)
-language-file: lang-en.yml
+language-file: en
 
 # Portal Configurations
 # Main Portal

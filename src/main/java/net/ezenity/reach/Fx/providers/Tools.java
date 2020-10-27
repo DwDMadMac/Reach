@@ -1,10 +1,11 @@
-package net.ezenity.reach.util.guiFx.providers;
+package net.ezenity.reach.Fx.providers;
 
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
-import net.ezenity.reach.util.guiFx.SpawnedItem;
-import net.ezenity.reach.configuration.Config;
+import net.ezenity.reach.Fx.Portals;
+import net.ezenity.reach.Main;
+import net.ezenity.reach.util.build.Spawn;
 import net.ezenity.reach.configuration.Lang;
 import net.ezenity.reach.util.Logger;
 import org.bukkit.entity.Player;
@@ -15,13 +16,17 @@ import org.bukkit.entity.Player;
  * This provider is the class for implementing tool inventory items. Here
  * will also contain information to what will happen next when a user
  * clicks one of the tool items.
+ *
+ * @author Ezenity
+ * @version 2.0.0
+ * @since 0.0.1
  */
-public class ToolsProvider implements InventoryProvider {
+public class Tools extends Portals implements InventoryProvider {
     /**
      * Spawned Item. Generates an ItemStack that is set within the configuration file. This is used
      * for setting the tools inside the Tools Portal.
      */
-    private final SpawnedItem spawnedItem = new SpawnedItem();
+    private final Spawn spawnItem = new Spawn();
 
     /**
      * Tools Portal.
@@ -35,22 +40,22 @@ public class ToolsProvider implements InventoryProvider {
     @Override
     public void init(Player player, InventoryContents inventoryContents) {
         // Tree Spawner Tool
-        inventoryContents.set(0,0, ClickableItem.of( spawnedItem.createItemStack("tools.tree-spawner"), e -> {
+        inventoryContents.set(0,0, ClickableItem.of( spawnItem.create("tools.tree-spawner"), e -> {
             // Check if target has permissions TODO: Create abstract solution
             if (!player.hasPermission("command.reach.portal.tools.treeSpawner")) {
-                Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " Does not have permission to use the Tree Spawner Tool. Return");
+                Main.getReachLogger().debug("onToolsPortalClick | " + player.getDisplayName() + " Does not have permission to use the Tree Spawner Tool. Return");
                 // TODO Create lang for message
-                Lang.send(player, Lang.COMMAND_NO_PERMISSION
+                Main.getReachLang().send(player, Main.getReachLang().COMMAND_NO_PERMISSION
                         .replace("{getCommand}", "Tree Spawner"));
                 return;
             }
 
             // Check if the tree Spawner tool is enabled TODO: Create abstract solution
-            if (!Config.TREE_SPAWNER_ENABLED) {
-                Logger.debug("onToolsPortalClick | " + player.getDisplayName() + " clicked Tree Spawner tool, however it is disabled. Closing inventory");
-                Logger.info(player.getDisplayName() + "&2 clicked Tree Spawner when it was disabled, closed inventory.");
+            if (!Main.getReachConfig().TREE_SPAWNER_ENABLED) {
+                Main.getReachLogger().debug("onToolsPortalClick | " + player.getDisplayName() + " clicked Tree Spawner tool, however it is disabled. Closing inventory");
+                Main.getReachLogger().info(player.getDisplayName() + "&2 clicked Tree Spawner when it was disabled, closed inventory.");
                 player.closeInventory();
-                Lang.send(player, Lang.DISABLED_COMMAND
+                Main.getReachLang().send(player, Main.getReachLang().DISABLED_COMMAND
                         .replace("{getDisabledCommand}", "Tree Spawner"));
                 return;
             }
@@ -66,10 +71,10 @@ public class ToolsProvider implements InventoryProvider {
 //            );
 
             // Spawn custom item in players hand
-            spawnedItem.setItem(
+            spawnItem.set(
                     player,
                     "tools.tree-spawner.spawned",
-                    Config.TREE_SPAWNER_SPAWNED_IDENTIFIER
+                    Main.getReachConfig().TREE_SPAWNER_SPAWNED_IDENTIFIER
             );
 
             player.closeInventory();

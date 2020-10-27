@@ -1,19 +1,32 @@
-node {
-    stage('Preparation') {
-        cleanWs()
-        git credentialsId: 'EzeGithub', url: 'https://github.com/ProjectEzenity/Reach.git'
-        mvnHome = tool 'ciMaven'
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "ciMaven"
     }
 
-    stage('Build') {
-        echo 'Execute maven'
-        // Phases: validate compile test-compile test package integration install deploy
-        sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean install javadoc:javadoc"
-        javadoc javadocDir: 'target/site/apidocs', keepAll: false
-    }
+    stages {
+        stage('Preparation') {
+            steps {
+                echo 'Preparation...'
+                cleanWs()
+                git credentialsId: 'EzeGithub', url: 'https://github.com/ProjectEzenity/Reach.git'
+            }
+        }
 
-    stage('Results') {
-        junit 'Reach/target/surefire-reports/*.xml'
-        archive 'target/*.jar'
+        stage('Build') {
+            steps {
+                echo 'Execute maven...'
+                // Phases: validate compile test-compile test package integration install deploy
+                sh "mvn clean install"
+                javadoc javadocDir: 'target/apidocs', keepAll: false
+            }
+            post {
+                always {
+                   junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
     }
 }

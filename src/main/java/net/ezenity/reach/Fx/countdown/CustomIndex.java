@@ -1,4 +1,4 @@
-package net.ezenity.reach.util.countdownFx;
+package net.ezenity.reach.Fx.countdown;
 
 import java.util.Objects;
 
@@ -8,9 +8,10 @@ import java.util.Objects;
  * type value, representing the returned index. To see how this class
  * can be implemented through usage, please refer to:
  * {@link Countdown}
- * <p>
- * @author anthonymmacallister
+ *
+ * @author Ezenity
  * @version 1.0.0
+ * @since 1.0.0
  */
 public class CustomIndex {
     /**

@@ -9,9 +9,10 @@ import java.util.Random;
  * Random Utilities. This class is framework for creating random objects.
  *
  * @author anthonymmacallister
- * @version 1.0.0
+ * @version 1.2.0
+ * @since 1.0.0
  */
-public final class RandomUtils {
+public final class Misc {
     /**
      * Static Random. Gets a random system time in nano seconds.
      */
@@ -20,7 +21,7 @@ public final class RandomUtils {
     /**
      * Constructor. Utilized for creating new objects.
      */
-    private RandomUtils() {}
+    private Misc() {}
 
     /**
      * Gets a random vector location.

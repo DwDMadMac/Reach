@@ -1,6 +1,6 @@
-package net.ezenity.reach.util.countdownFx;
+package net.ezenity.reach.Fx.countdown;
 
-import net.ezenity.reach.util.particleFx.ParticleSpawnedTask;
+import net.ezenity.reach.Fx.effects.Task;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.entity.Player;
@@ -21,8 +21,9 @@ import java.util.UUID;
  * with the help from a {@link CustomIndex} double key algorithm. This will allow you to apply
  * two keys to the hashmap which one combined the two keys into one hash.
  *
- * @author anthonymmacallister
+ * @author Ezenity
  * @version 1.0.0
+ * @since 1.0.0
  */
 public class Countdown {
     /**
@@ -77,7 +78,7 @@ public class Countdown {
      * countdown key. If the system time in milliseconds have passed, it will return 0L instead.
      * This method is used to compute for active countdowns. For an example of how to use this
      * method, refer to:
-     * {@link ParticleSpawnedTask#setParticleTask(Player, Particle, Location, String, int, int)}
+     * {@link Task#set(Player, Particle, Location, String, int, int)}
      *
      * @param playerID get player uuid
      * @param countdownKey get custom countdown key

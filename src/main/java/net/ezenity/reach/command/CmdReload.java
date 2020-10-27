@@ -2,10 +2,9 @@ package net.ezenity.reach.command;
 
 import java.util.Collections;
 import java.util.List;
+
 import net.ezenity.reach.Main;
-import net.ezenity.reach.configuration.Config;
-import net.ezenity.reach.configuration.Lang;
-import net.ezenity.reach.util.Logger;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -18,25 +17,12 @@ import org.bukkit.command.TabExecutor;
  *     <li>Config</li>
  *     <li>Lang</li>
  * </ul>
+ *
+ * @author Ezenity
+ * @version 2.0.0
+ * @since 0.0.1
  */
 public class CmdReload implements TabExecutor {
-    /**
-     * Initialize the plugin instance.
-     */
-    private final Main plugin;
-    /**
-     * String message. Used for outputting the current state of the reloaded files.
-     */
-    private String msg;
-
-    /**
-     * Initializing the plugin object
-     *
-     * @param plugin Load instance of plugin
-     */
-    public CmdReload(Main plugin) {
-        this.plugin = plugin;
-    }
 
     /**
      * Will auto populate the reload option in the text box to allow the user to tab in the remainder of the option
@@ -70,21 +56,19 @@ public class CmdReload implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("command.reach.reload")){
-            Lang.send(sender, Lang.COMMAND_NO_PERMISSION
+            Main.getReachLang().send(sender, Main.getReachLang().COMMAND_NO_PERMISSION
                 .replace("{getCommand}", "Reload"));
             return true;
         }
 
 
         if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
-            Config.reload();
-            Lang.reload();
-            msg = plugin.getName() + " v" + plugin.getDescription().getVersion();
-            msg += " reload";
-            Logger.info(plugin.getName() + " v" + plugin.getDescription().getVersion() + " was reloaded by " + sender.getName());
+            Main.getReachLang().reload();
+            Main.getReachConfig().reload();
+            Main.getReachLogger().info(Main.getInstance().getName() + " v" + Main.getInstance().getDescription().getVersion() + " was reloaded by " + sender.getName());
         }
 
-        Lang.send(sender, msg);
+        Main.getReachLang().send(sender, "Reach plugin reloaded"); // TODO: apply to lang
 
         return true;
     }

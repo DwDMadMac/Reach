@@ -1,11 +1,10 @@
-package net.ezenity.reach.util.guiFx;
+package net.ezenity.reach.util.build;
 
-import net.ezenity.reach.configuration.Config;
 import net.ezenity.reach.Main;
+import net.ezenity.reach.configuration.Config;
 import net.ezenity.reach.configuration.Lang;
-import net.ezenity.reach.util.guiFx.providers.MainProvider;
-import net.ezenity.reach.util.guiFx.providers.ToolsProvider;
-import net.ezenity.reach.util.guiFx.providers.TreeSpawnerProvider;
+import net.ezenity.reach.Fx.providers.Tools;
+import net.ezenity.reach.Fx.providers.TreeSpawner;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
@@ -19,10 +18,11 @@ import java.util.*;
  * from the configuration file and input the in its appropriate places to create the
  * desired outcome.
  *
- * @author anthonymmacallister
- * @version 1.0.0
+ * @author Ezenity
+ * @version 1.2.0
+ * @since 1.0.0
  */
-public abstract class CreateItem extends CustomItemStack {
+public abstract class Make extends Item {
     /**
      * Initialize a plugin instance. This is used for gather plugin configuration settings so that we may
      * generate a custom item.
@@ -36,20 +36,20 @@ public abstract class CreateItem extends CustomItemStack {
      * without the suffix declaration, when calling the getConfigItem() method. Usage can
      * be viewed in our "Provider" classes:
      * <ul>
-     *     <li>{@link MainProvider}</li>
-     *     <li>{@link ToolsProvider}</li>
-     *     <li>{@link TreeSpawnerProvider}</li>
+     *     <li>{@link Main}</li>
+     *     <li>{@link Tools}</li>
+     *     <li>{@link TreeSpawner}</li>
      * </ul>
      *
      * @param configItemLocation gets the string location from the configuration file.
      * @return custom tool with prerequisites from the config file
      */
     @Override
-    public ItemStack createItemStack(String configItemLocation) {
+    public ItemStack create(String configItemLocation) {
         String itemType = (String) plugin.getConfig().get("portal." + configItemLocation + ".type");
-        ItemStack itemStack = new ItemStack(Objects.requireNonNull(Material.getMaterial(Objects.requireNonNull(itemType))));
+        org.bukkit.inventory.ItemStack itemStack = new org.bukkit.inventory.ItemStack(Objects.requireNonNull(Material.getMaterial(Objects.requireNonNull(itemType))));
         ItemMeta itemMeta = itemStack.getItemMeta();
-        Objects.requireNonNull(itemMeta).setDisplayName(Lang.colorize(plugin.getConfig().getString("portal." + configItemLocation + ".title")));
+        Objects.requireNonNull(itemMeta).setDisplayName(Main.getReachLang().colorize(plugin.getConfig().getString("portal." + configItemLocation + ".title"))); // TODO: Revamp from static
         itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> itemLore = new ArrayList<>();
         for (String newLines : plugin.getConfig().getStringList("portal." + configItemLocation + ".lore")) {

@@ -1,9 +1,9 @@
-name: "${project.artifactId}"
-main: "${project.groupId}.Main"
-version: "${project.version}"
-description: "${project.description} Coming Soon."
+name: "Reach"
+main: "net.ezenity.reach.Main"
+version: "2.0.0"
+description: "Your go to for Tools, Weapons and protections."
 author: "Ezenity"
-api-version: "1.15"
+api-version: "1.16"
 depend: [SmartInvs]
 
 commands:

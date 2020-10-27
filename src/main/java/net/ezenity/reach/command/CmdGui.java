@@ -5,10 +5,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import net.ezenity.reach.configuration.Lang;
+import net.ezenity.reach.Main;
+import net.ezenity.reach.Fx.Portals;
 
-import net.ezenity.reach.util.Logger;
-import net.ezenity.reach.util.guiFx.Portals;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -16,8 +15,12 @@ import org.bukkit.entity.Player;
 
 /**
  * Main Reach Portal. This will hold the starting point to child portals.
+ *
+ * @author Ezenity
+ * @version 2.0.0
+ * @since 0.0.1
  */
-public class CmdMainGui implements TabExecutor {
+public class CmdGui implements TabExecutor {
     /**
      * Portals Array List. This list is used for auto tab fill.
      */
@@ -61,7 +64,7 @@ public class CmdMainGui implements TabExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Check if send is a player
         if (!(sender instanceof Player)){
-            Lang.send(sender, Lang.PLAYER_COMMAND);
+            Main.getReachLang().send(sender, Main.getReachLang().PLAYER_COMMAND);
             return true;
         }
 
@@ -70,16 +73,15 @@ public class CmdMainGui implements TabExecutor {
 
         // Check if player has proper permission
         if (!target.hasPermission("command.reach.portals")){
-            Lang.send(target, Lang.COMMAND_NO_PERMISSION
+            Main.getReachLang().send(target, Main.getReachLang().COMMAND_NO_PERMISSION
             .replace("{getCommand}", "Portal"));
             return true;
         }
 
         // Check to see if the target main hand is empty
         if (!target.getInventory().getItemInMainHand().getType().isAir()){
-            Logger.debug("onToolsPortalClick | " + target.getDisplayName() + " main hand is not empty, cannot place tool in hand. Return.");
-            // TODO: Create lang for message
-            Lang.send(target, "Your hand is not empty, tool cannot be placed. Cancelling. Please empty main hand and try again.");
+            Main.getReachLogger().debug("onToolsPortalClick | " + target.getDisplayName() + " main hand is not empty, cannot place tool in hand. Return.");
+            Main.getReachLang().send(target, "Your hand is not empty, tool cannot be placed. Cancelling. Please empty main hand and try again."); // TODO: Create lang for message
             target.closeInventory();
             return true;
         }

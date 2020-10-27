@@ -1,22 +1,27 @@
-package net.ezenity.reach.util.guiFx;
+package net.ezenity.reach.Fx.providers;
 
 import fr.minuskube.inv.content.InventoryContents;
 import fr.minuskube.inv.content.InventoryProvider;
+import net.ezenity.reach.Fx.Portals;
+import net.ezenity.reach.util.build.Spawn;
 import org.bukkit.entity.Player;
-
 /**
  * Weapons Provider.
  *
  * This provider is the class for implementing weapon inventory items. Here
  * will also contain information to what will happen next when a user clicks on
  * one of the weapon items.
+ *
+ * @author Ezenity
+ * @version 1.2.0
+ * @since 0.0.1
  */
-public class WeaponsProvider implements InventoryProvider {
+public class Weapons extends Portals implements InventoryProvider {
     /**
      * Spawned Item. Generates an ItemStack that is set within the configuration file.
      * This is used for setting the weapons inside the Weapons Portal.
      */
-    private final SpawnedItem spawnedItem = new SpawnedItem();
+    private final Spawn spawnItem = new Spawn();
 
     /**
      * Weapons Portal.

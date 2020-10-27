@@ -1,5 +1,6 @@
-package net.ezenity.reach.util.particleFx;
+package net.ezenity.reach.Fx.effects;
 
+import net.ezenity.reach.Main;
 import net.ezenity.reach.configuration.Lang;
 import net.ezenity.reach.util.Logger;
 import org.bukkit.Location;
@@ -11,7 +12,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import static net.ezenity.reach.util.countdownFx.Countdown.*;
+import static net.ezenity.reach.Fx.countdown.Countdown.*;
 
 /**
  * This class is used for custom particle spawning. Each particle is spawned as a executor which will be used
@@ -19,9 +20,10 @@ import static net.ezenity.reach.util.countdownFx.Countdown.*;
  * task will not execute and continue to its pre-requites code.
  *
  * @author anthonymmacallister
- * @version 1.0.0
+ * @version 2.0.0
+ * @since 1.0.0
  */
-public class ParticleSpawnedTask {
+public class Task extends Particles{
     /**
      * This field we are using an Executor Service as a higher level replacement for working with threads directly. In this
      * case we are capable of running asynchronously tasks and manage a pool of threads. This will allow us to stop the
@@ -31,15 +33,15 @@ public class ParticleSpawnedTask {
      * service backed by a thread-pool of size one. If we need to increase the pool size, we can by simply passing a larger
      * value than one.
      */
-    private static final ScheduledExecutorService THREAD_EXECUTOR = Executors.newScheduledThreadPool(1);
+    private final ScheduledExecutorService THREAD_EXECUTOR = Executors.newScheduledThreadPool(1);
     /**
      * We use a {@link ScheduledFuture} to represent the results of our asynchronous delayed particle computation.
      */
-    private static ScheduledFuture<?> PARTICLE_HANDLER;
+    private ScheduledFuture<?> PARTICLE_HANDLER;
     /**
      * Particles instance. Used to create a custom particle utilizing a serious of getters and setters.
      */
-    private static final Particles particles = new Particles();
+    private final Particles particles = new Particles();
 
     /**
      * We will use this method to set our given particle to the plausible demand. The particle will be set using an
@@ -55,17 +57,17 @@ public class ParticleSpawnedTask {
      * @param player get player
      * @param particle get particle
      * @param location get particle location
-     * @param particleDesign get particle design
+     * @param designString get particle design
      * @param cooldown get cooldown in seconds
-     * @param particleSpawnedTimer get particle spawn rate in seconds
+     * @param spawnedTimer get particle spawn rate in seconds
      */
-    public static void setParticleTask(Player player, Particle particle, Location location, String particleDesign, int cooldown, int particleSpawnedTimer) { // TODO: Rework particle param
-        if (!(System.currentTimeMillis() > getCountdown(player.getUniqueId(), particleDesign))) {
-            Logger.info("Count Time  " + getCountdown(player.getUniqueId(), particleDesign));
-            Logger.info("System Time " + System.currentTimeMillis());
+    public void set(Player player, Particle particle, Location location, String designString, int cooldown, int spawnedTimer) { // TODO: Rework particle param
+        if (!(System.currentTimeMillis() > getCountdown(player.getUniqueId(), designString))) {
+            Main.getReachLogger().info("Count Time  " + getCountdown(player.getUniqueId(), designString));
+            Main.getReachLogger().info("System Time " + System.currentTimeMillis());
         } else {
-            particles.setParticle(particle);
-            particles.setParticleDesign(particleDesign);
+            particles.set(particle);
+            particles.setDesignString(designString);
             particles.setPlayer(player);
             particles.setLocation(location);
 
@@ -73,19 +75,19 @@ public class ParticleSpawnedTask {
 
             THREAD_EXECUTOR.schedule(() -> {
                 PARTICLE_HANDLER.cancel(true);
-            }, particleSpawnedTimer, TimeUnit.SECONDS);
+            }, spawnedTimer, TimeUnit.SECONDS);
 
-            Logger.info("==============================================================");
-            Logger.info("==============================================================");
-            Logger.info("Countdown no longer activated, create particle");
-            Logger.info("&1Create countdown");
-            setCountdown(player.getUniqueId(), particleDesign, cooldown);
-            Logger.info("==============================================================");
-            Logger.info("Get countdown in milliseconds " + getCountdown(player.getUniqueId(), particleDesign));
-            Logger.info("System current time in milliseconds " + System.currentTimeMillis());
-            Logger.info("==============================================================");
-            Lang.send(player, "Countdown activated for " + particleDesign);
-            Logger.info("==============================================================");
+            Main.getReachLogger().info("==============================================================");
+            Main.getReachLogger().info("==============================================================");
+            Main.getReachLogger().info("Countdown no longer activated, create particle");
+            Main.getReachLogger().info("&1Create countdown");
+            setCountdown(player.getUniqueId(), designString, cooldown);
+            Main.getReachLogger().info("==============================================================");
+            Main.getReachLogger().info("Get countdown in milliseconds " + getCountdown(player.getUniqueId(), designString));
+            Main.getReachLogger().info("System current time in milliseconds " + System.currentTimeMillis());
+            Main.getReachLogger().info("==============================================================");
+            Main.getReachLang().send(player, "Countdown activated for " + designString);
+            Main.getReachLogger().info("==============================================================");
 
             if (PARTICLE_HANDLER.isCancelled())
                 THREAD_EXECUTOR.shutdown();

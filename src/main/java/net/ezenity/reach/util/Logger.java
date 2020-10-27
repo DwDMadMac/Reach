@@ -1,6 +1,6 @@
 package net.ezenity.reach.util;
 
-import net.ezenity.reach.configuration.Config;
+import net.ezenity.reach.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
@@ -8,6 +8,10 @@ import org.bukkit.ChatColor;
  * Reach Logger Class
  * <p>
  * Custom utilities for a console messages
+ *
+ * @author Ezenity
+ * @version 0.0.1
+ * @since 0.0.1
  */
 public class Logger {
     /**
@@ -15,9 +19,9 @@ public class Logger {
      *
      * @param msg Send console message
      */
-    public static void log(String msg) {
+    public void log(String msg) {
         msg = ChatColor.translateAlternateColorCodes('&', "&a[&7Reach&a]&r " + msg);
-        if (!Config.COLOR_LOGS){
+        if (!Main.getReachConfig().COLOR_LOGS){
             msg = ChatColor.stripColor(msg);
         }
         Bukkit.getServer().getConsoleSender().sendMessage(msg);
@@ -30,10 +34,10 @@ public class Logger {
      *
      * @param msg Send debug message
      */
-    public static void debug(String msg) {
+    public void debug(String msg) {
         msg = ChatColor.translateAlternateColorCodes('&', "&2[&eDEBUG&2]&f " + msg);
-        if (Config.DEBUG_MODE){
-            if (!Config.COLOR_LOGS){
+        if (Main.getReachConfig().DEBUG_MODE){
+            if (!Main.getReachConfig().COLOR_LOGS){
                 msg = ChatColor.stripColor(msg);
             }
             log(msg);
@@ -47,10 +51,10 @@ public class Logger {
      *
      * @param msg
      */
-    public static void info(String msg) {
+    public void info(String msg) {
         msg = ChatColor.translateAlternateColorCodes('&', "&b[&7INFO&b]&f " + msg);
-        if (Config.INFO_LOGGING) {
-            if (!Config.COLOR_LOGS){
+        if (Main.getReachConfig().INFO_LOGGING) {
+            if (!Main.getReachConfig().COLOR_LOGS){
                 msg = ChatColor.stripColor(msg);
             }
             log(msg);
@@ -64,10 +68,10 @@ public class Logger {
      *
      * @param msg
      */
-    public static void warn(String msg) {
+    public void warn(String msg) {
         msg = ChatColor.translateAlternateColorCodes('&', "&6[&eWARN&6]&a " + msg);
-        if (Config.WARN_LOGGING){
-            if (!Config.COLOR_LOGS){
+        if (Main.getReachConfig().WARN_LOGGING){
+            if (!Main.getReachConfig().COLOR_LOGS){
                 msg = ChatColor.stripColor(msg);
             }
             log(msg);
@@ -81,10 +85,10 @@ public class Logger {
      *
      * @param msg
      */
-    public static void error(String msg) {
+    public void error(String msg) {
         msg = ChatColor.translateAlternateColorCodes('&', "&4[&cERROR&4]&e " + msg);
-        if (Config.ERROR_LOGGING){
-            if (!Config.COLOR_LOGS){
+        if (Main.getReachConfig().ERROR_LOGGING){
+            if (!Main.getReachConfig().COLOR_LOGS){
                 msg = ChatColor.stripColor(msg);
             }
             log(msg);

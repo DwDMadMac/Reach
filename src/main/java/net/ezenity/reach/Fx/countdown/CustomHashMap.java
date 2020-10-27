@@ -1,4 +1,4 @@
-package net.ezenity.reach.util.countdownFx;
+package net.ezenity.reach.Fx.countdown;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,9 +9,10 @@ import java.util.function.BiFunction;
  * CustomHashMap class is the Hash table based implementation of the Map interface. This class makes no
  * guarantees as to the iteration order of the map, in particular it does not guarantee that the order
  * will remain constant over time. This class also permits null keys and values.
- * <p>
- * @author anthonymmacallister
+ *
+ * @author Ezenity
  * @version 1.0.0
+ * @since 1.0.0
  *
  * @param <K1> type of keys maintained by the map
  * @param <K2> type of keys maintained by the map

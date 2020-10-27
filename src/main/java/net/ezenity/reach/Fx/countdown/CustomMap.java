@@ -1,4 +1,4 @@
-package net.ezenity.reach.util.countdownFx;
+package net.ezenity.reach.Fx.countdown;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,9 +9,10 @@ import java.util.Map;
  * is implemented is we put each key into its own map of collections which will allow us
  * to look up these individual keys if need be. However, there is a downside to this. when putting
  * the keys into the map this will apply a duplicate of the value. Key One will have the same value as Key Two.
- * <p>
- * @author anthonymmacallister
+ *
+ * @author Ezenity
  * @version 1.0.0
+ * @since 1.0.0
  *
  * @param <K1> set a key to the map
  * @param <K2> set a key to the map
